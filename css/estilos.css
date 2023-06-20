@@ -1,0 +1,228 @@
+*{
+    margin: 0;
+    padding: 0;
+    
+}
+
+body {
+  background: linear-gradient(to bottom, #f1eff3 0%,#ccd8dd 100%);
+  font-family: 'Manjari', sans-serif;
+  
+}
+
+body header h1{
+    padding: 20px 20px;
+}
+
+/* HEADER */
+
+.title h1 {
+    text-align: center;
+    font-size: 2.9em;
+    text-transform: uppercase;
+}
+
+/* CONTAINER */
+
+.container {
+    width: 90%;
+    max-width: 2000px;
+    margin: 0.6em auto;
+    display: grid;
+    gap: 1.2em;
+    /* grid-template-columns: repeat(4, 1fr) 3%; */
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.container>.header, .container>.content, .container>.sidebar, .container>.footer, .container>div {
+    background: #fff;
+    padding: 20px;
+    border: 1px solid #000000;
+}
+
+.container>.header, .container>.footer {
+    grid-column: 1/-1;
+    background-color: #1e272e;
+    color: #ffffff;
+}
+
+.container>.content {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.content .article-matricula {
+    position: relative;
+    background: #808e9b;
+    margin-top: 5px;
+    color: #dfe6e9;
+    padding: 30px;
+    
+}
+
+.content> .article-matricula:hover{
+    cursor: pointer;
+    color: #000000;
+    background: #ffffff;
+    transition: all 0.5s ease;
+
+}
+
+
+.content .article-matricula::after {
+    content: ''; /* Agrega contenido al pseudo-elemento */
+    position: absolute;
+    top: 0;
+    right: 2px;
+    width: 100%;
+    max-width: 85px;
+    height: 85px;
+    background-image: url(/img/matricula.svg);
+    background-size: cover;
+    box-shadow: 0 0 10px rgba(14, 1, 1, 0.5);
+}
+
+
+
+.content .article-perfil {
+    position: relative;
+    background: #808e9b;
+    padding: 30px;
+    margin-top: 5px;
+    color: #dfe6e9;
+
+    
+}
+
+.content> .article-perfil:hover{
+    cursor: pointer;
+    color: #000000;
+    background: #ffffff;
+    transition: all 0.5s ease;
+
+}
+
+
+.content .article-perfil::after {
+    content: ''; /* Agrega contenido al pseudo-elemento */
+    position: absolute;
+    top: 0;
+    right: 2px;
+    width: 100%;
+    max-width: 85px;
+    height: 85px;
+    background-image: url(/img/perfil2.svg);
+    background-size: cover;
+    box-shadow: 0 0 10px rgba(14, 1, 1, 0.5);
+}
+
+.content .article-materia-actual {
+    position: relative;
+    background: #808e9b;
+    padding: 30px;
+    margin-top: 5px;
+    color: #dfe6e9;
+    
+}
+
+.content> .article-materia-actual:hover{
+    cursor: pointer;
+    color: #000000;
+    background: #ffffff;
+    transition: all 0.5s ease;
+
+}
+
+
+.content .article-materia-actual::after {
+    content: ''; /* Agrega contenido al pseudo-elemento */
+    position: absolute;
+    top: 0;
+    right: 2px;
+    width: 100%;
+    max-width: 85px;
+    height: 85px;
+    background-image: url(/img/materia.svg);
+    background-size: cover;
+    box-shadow: 0 0 10px rgba(14, 1, 1, 0.5);
+}
+
+
+
+.content .article h1,
+.content .article p {
+    padding: 5px;
+}
+
+
+.container>.related-post {
+    background: #2d3436;
+    color: #ffffff;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s ease;
+}
+
+.container>.related-post:hover {
+    cursor: pointer;
+    color: #000000;
+    background: #ffffff;
+}
+
+    
+.avatar {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    padding: 5px 15px;
+  }
+  
+  .avatar img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 2px;
+    margin-top: 5px;
+  }
+
+
+  .avatar-text p {
+    font-size: 15px;
+    margin-right: 5px;
+    color: #619bdd;
+    
+  }
+
+  .avatar .cierre-sesion{
+    margin-top: 5px;
+    margin-left: 45px;
+    font-weight: bold;
+    color: #000000;
+  }
+
+.nombre-logo{
+    position: absolute;
+    left: 1%;
+    top: 1%;
+    
+}
+  
+/* MEDIA QUERIES */
+
+@media screen and (max-width: 768px) {
+    .header {
+        text-align: center;
+    }
+    .container .content {
+        grid-column: 1 / -1;
+    }
+    .container .sidebar {
+        grid-column: 1 / 6;
+    }
+
+    .container .related-post {
+        grid-column: 1/-1;
+    }
+}
