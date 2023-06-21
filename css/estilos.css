@@ -25,8 +25,8 @@ body header h1{
 /* CONTAINER */
 
 .container{
-    width: 90%;
-    max-width: 1400px;
+    width: 100%;
+    max-width: 1300px;
     margin: 0.6em auto;
     display: grid;
     gap: 1.2em;
@@ -38,13 +38,13 @@ body header h1{
     background: #fff;
     border: 1px solid #000000;
     padding: 20px;
-   
 }
 
 .container>.header, .container>.footer {
     grid-column: 1/-1;
     background-color: #1e272e;
     color: #ffffff;
+    
  
 }
 
@@ -211,8 +211,7 @@ body header h1{
 
 .nombre-logo{
     position: absolute;
-    left: 1%;
-    top: 1%;
+    left: 0.5em;
     
 }
   
