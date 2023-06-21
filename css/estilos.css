@@ -24,9 +24,9 @@ body header h1{
 
 /* CONTAINER */
 
-.container {
+.container{
     width: 90%;
-    max-width: 2000px;
+    max-width: 1400px;
     margin: 0.6em auto;
     display: grid;
     gap: 1.2em;
@@ -34,16 +34,18 @@ body header h1{
     grid-template-columns: repeat(3, 1fr);
 }
 
-.container>.header, .container>.content, .container>.sidebar, .container>.footer, .container>div {
+.container>.content, .container>.sidebar, .container>.footer, .container>div {
     background: #fff;
-    padding: 20px;
     border: 1px solid #000000;
+    padding: 20px;
+   
 }
 
 .container>.header, .container>.footer {
     grid-column: 1/-1;
     background-color: #1e272e;
     color: #ffffff;
+ 
 }
 
 .container>.content {
@@ -202,6 +204,11 @@ body header h1{
     color: #000000;
   }
 
+  .avatar .cierre-sesion:hover{
+    cursor: pointer;
+    text-decoration: underline;
+  }
+
 .nombre-logo{
     position: absolute;
     left: 1%;
@@ -218,8 +225,20 @@ body header h1{
     .container .content {
         grid-column: 1 / -1;
     }
-    .container .sidebar {
-        grid-column: 1 / 6;
+    
+    .content .article-matricula::after,
+    .content .article-perfil::after,
+    .content .article-materia-actual::after {
+        max-width: 60px; /* Ajusta el tamaño de la imagen */
+        height: 60px; /* Ajusta el tamaño de la imagen */
+    }
+
+    .content .article h1 {
+        font-size: 1.5em; /* Ajusta el tamaño de la letra */
+    }
+
+    .content .article p {
+        font-size: 1em; /* Ajusta el tamaño de la letra */
     }
 
     .container .related-post {
