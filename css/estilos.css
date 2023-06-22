@@ -11,7 +11,7 @@ body {
 }
 
 body header h1{
-    padding: 20px 20px;
+    padding: 10px 20px;
 }
 
 /* HEADER */
@@ -42,9 +42,8 @@ body header h1{
 
 .container>.header, .container>.footer {
     grid-column: 1/-1;
-    background-color: #1e272e;
-    color: #ffffff;
-    
+    background-color: #1e272e;  
+    color: white;
  
 }
 
@@ -156,9 +155,9 @@ body header h1{
 
 
 .container>.related-post {
-    background: #2d3436;
+    background: #30869e;
     color: #ffffff;
-    height: 180px;
+    height: 190px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -171,7 +170,22 @@ body header h1{
     background: #ffffff;
 }
 
-    
+.related-post-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+.related-post-list li {
+  margin-bottom: 10px;
+}
+
+.related-post-list li:last-child {
+  margin-bottom: 0;
+}
+ 
+
 .avatar {
     display: flex;
     align-items: center;
@@ -216,12 +230,12 @@ body header h1{
 
 .footer {
     background-color: #1e272e;
-    color: #ffffff;
     padding: 20px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: auto 1fr auto; /* Nueva propiedad para definir las filas */
     gap: 5px;
+    color: white;
   }
   
   .footer-content {
@@ -236,20 +250,39 @@ body header h1{
   .footer-credits {
     text-align: right;
     grid-row: 3; /* Se ubica en la tercera fila */
-    margin-top: 4em;
+    margin-top: 5em;
   }
   
 .footer-section.contact {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
+    align-items: center;
+    
   }
 
   .footer-section.contact h4{
-    margin-bottom: 10px;
+    margin-bottom: 10px;    
+  }
+
+  .footer-section.contact img {
+    margin-right: 5px;
+}
+  
+a:visited {
+    color: white; /* Cambia el color a negro después de hacer clic */
+    text-decoration: none;
   }
   
+  .header h1 {
+    display: inline-flex;
+    align-items: center;
+  }
+  
+  .header img {
+    margin-right: 35px; /* Ajusta el margen derecho según sea necesario */
+  }
+  
+
 
 .footer ul {
     display: flex;
@@ -303,7 +336,8 @@ ul{
 
 @media screen and (max-width: 768px) {
     .header {
-        text-align: center;
+        text-align: start;
+        
     }
     .container .content {
         grid-column: 1 / -1;
