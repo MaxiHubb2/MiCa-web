@@ -25,128 +25,135 @@ body header h1{
 /* CONTAINER */
 
 .container{
-    width: 100%;
-    max-width: 1300px;
-    margin: 0.6em auto;
-    display: grid;
-    gap: 1.2em;
-    /* grid-template-columns: repeat(4, 1fr) 3%; */
-    grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+  max-width: 1300px;
+  margin: 0.6em auto;
+  display: grid;
+  gap: 1.2em;
+  grid-template-columns: repeat(1, 1fr) 50%;
 }
 
-.container>.content, .container>.sidebar, .container>div {
-    background: #fff;
-    border: 1px solid #000000;
-    padding: 20px;
+.container > .content,
+.container >.adicional{
+  background: #fff;
+  border: 1px solid #000000;
+  padding: 20px;
+  display: grid;
 }
 
-.container>.header, .container>.footer {
-    grid-column: 1/-1;
-    background-color: #1e272e;  
-    color: white;
- 
+.container> .content .article-matricula,
+.container> .adicional .article-inscripciones{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.container>.content {
-    grid-column: span 2;
-    grid-row: span 2;
+.container > .header,
+.container > .footer {
+  grid-column: 1 / -1; /* Ocupa todas las columnas */
+  background-color: #1e272e;  
+  color: white;
 }
 
-.content .article-matricula {
-    position: relative;
-    background: #808e9b;
-    margin-top: 5px;
-    color: #dfe6e9;
-    padding: 30px;
-    
-}
-
-.content> .article-matricula:hover{
-    cursor: pointer;
-    color: #000000;
-    background: #ffffff;
-    transition: all 0.5s ease;
-
+.content .article-materia-en-curso,
+.content .article-materia-regularizada,
+.content .article-historial-academico {
+  position: relative;
+  background: #808e9b;
+  padding: 30px;
+  margin-top: 5px;
+  color: #dfe6e9;
 }
 
 
-.content .article-matricula::after {
-    content: ''; /* Agrega contenido al pseudo-elemento */
-    position: absolute;
-    top: 0;
-    right: 2px;
-    width: 100%;
-    max-width: 85px;
-    height: 85px;
-    background-image: url(/img/matricula.svg);
-    background-size: cover;
-    box-shadow: 0 0 10px rgba(14, 1, 1, 0.5);
+.content .article-materia-regularizada::after,
+.content .article-historial-academico::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 2px;
+  width: 100%;
+  max-width: 85px;
+  height: 85px;
+  background-image: url(/img/materia.svg);
+  background-size: cover;
+  box-shadow: 0 0 10px rgba(14, 1, 1, 0.5);
+}
+.content .article-materia-en-curso::after{
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 2px;
+  width: 100%;
+  max-width: 85px;
+  height: 85px;
+  background-image: url(/img/matricula.svg);
+  background-size: cover;
+  box-shadow: 0 0 10px rgba(14, 1, 1, 0.5);
 }
 
-.content .article-perfil {
-    position: relative;
-    background: #808e9b;
-    padding: 30px;
-    margin-top: 5px;
-    color: #dfe6e9;
-
-    
-}
-
-.content> .article-perfil:hover{
-    cursor: pointer;
-    color: #000000;
-    background: #ffffff;
-    transition: all 0.5s ease;
-
-}
-
-
-.content .article-perfil::after {
-    content: ''; /* Agrega contenido al pseudo-elemento */
-    position: absolute;
-    top: 0;
-    right: 2px;
-    width: 100%;
-    max-width: 85px;
-    height: 85px;
-    background-image: url(/img/perfil2.svg);
-    background-size: cover;
-    box-shadow: 0 0 10px rgba(14, 1, 1, 0.5);
-}
-
-.content .article-materia-actual {
-    position: relative;
-    background: #808e9b;
-    padding: 30px;
-    margin-top: 5px;
-    color: #dfe6e9;
-    
-}
-
-.content> .article-materia-actual:hover{
-    cursor: pointer;
-    color: #000000;
-    background: #ffffff;
-    transition: all 0.5s ease;
-
+.adicional .article-inscripcion-materia,
+.adicional .article-inscripcion-final,
+.adicional .article-verificaciones {
+  position: relative;
+  background: #808e9b;
+  padding: 30px;
+  margin-top: 5px;
+  color: #dfe6e9;
 }
 
 
-.content .article-materia-actual::after {
-    content: ''; /* Agrega contenido al pseudo-elemento */
-    position: absolute;
-    top: 0;
-    right: 2px;
-    width: 100%;
-    max-width: 85px;
-    height: 85px;
-    background-image: url(/img/materia.svg);
-    background-size: cover;
-    box-shadow: 0 0 10px rgba(14, 1, 1, 0.5);
+.adicional .article-inscripcion-final::after,
+.adicional .article-verificaciones::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 2px;
+  width: 100%;
+  max-width: 85px;
+  height: 85px;
+  background-size: cover;
+  background-image: url(/img/materia.svg);
+  box-shadow: 0 0 10px rgba(14, 1, 1, 0.5);
 }
 
+.adicional .article-inscripcion-materia::after{
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 2px;
+  width: 100%;
+  max-width: 85px;
+  height: 85px;
+  background-size: cover;
+  background-image: url(/img/matricula.svg);
+  box-shadow: 0 0 10px rgba(14, 1, 1, 0.5);
+}
 
+.content .article-materia-en-curso,
+.content .article-materia-regularizada,
+.content .article-historial-academico,
+.adicional .article-inscripcion-materia,
+.adicional .article-inscripcion-final,
+.adicional .article-verificaciones {
+  position: relative;
+  background: #808e9b;
+  padding: 30px;
+  margin-top: 5px;
+  color: #dfe6e9;
+  grid-column: span 1; /* Ocupa una columna */
+  cursor: pointer; /* Cambia el cursor al pasar sobre los elementos */
+  transition: background-color 0.3s ease; /* Agrega una transición suave */
+}
+
+.content .article-materia-en-curso:hover,
+.content .article-materia-regularizada:hover,
+.content .article-historial-academico:hover,
+.adicional .article-inscripcion-materia:hover,
+.adicional .article-inscripcion-final:hover,
+.adicional .article-verificaciones:hover {
+  background-color: #333; /* Cambia el color de fondo al pasar el cursor */
+}
 
 .content .article h1,
 .content .article p {
@@ -154,44 +161,6 @@ body header h1{
 }
 
 
-.container>.related-post {
-    background: #30869e;
-    color: #ffffff;
-    height: 190px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.5s ease;
-}
-
-.container>.related-post:hover {
-    cursor: pointer;
-    color: #000000;
-    background: #ffffff;
-}
-
-.related-post-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  text-align: center;
-}
-
-.related-post-list li {
-  margin-bottom: 10px;
-}
-
-.related-post-list li:last-child {
-  margin-bottom: 0;
-}
- 
-
-.avatar {
-    display: flex;
-    align-items: center;
-    justify-content: end;
-    padding: 5px 15px;
-  }
   
   .avatar img {
     width: 50px;
@@ -204,22 +173,56 @@ body header h1{
 
   .avatar-text p {
     font-size: 15px;
-    margin-right: 5px;
     color: #619bdd;
-    
+    display: flex;
+    justify-content: end;
+    margin-right: 14px;
   }
 
-  .avatar .cierre-sesion{
-    margin-top: 5px;
-    margin-left: 45px;
-    font-weight: bold;
-    color: #000000;
+  .avatar {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    padding: 5px 15px;
   }
 
-  .avatar .cierre-sesion:hover{
-    cursor: pointer;
-    text-decoration: underline;
-  }
+
+.avatar .editar-perfil {
+  margin-top: 5px;
+  margin-right: 8em;
+  font-weight: bold;
+  color: #000000;
+  text-decoration: none;
+  position: relative;
+}
+
+.avatar .cierre-sesion{
+  margin-top: 5px;
+  margin-left: 6em; /* Ajusta el margen izquierdo según sea necesario */
+  font-weight: bold;
+  color: #000000;
+  text-decoration: none;
+  position: absolute;
+}
+
+.avatar .cierre-sesion::after,
+.avatar .editar-perfil::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; /* Ajusta la posición vertical del subrayado */
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: transparent; /* Establece el color inicial del subrayado */
+  transition: background-color 0.3s ease; /* Agrega una transición suave */
+}
+
+.avatar .cierre-sesion:hover,
+.avatar .editar-perfil:hover{
+  cursor: pointer;
+  text-decoration: underline;
+}
+
 
 .nombre-logo{
     position: absolute;
