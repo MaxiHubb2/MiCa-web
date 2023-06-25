@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const btnAgregarMateria = document.getElementById("btn-agregar-materia");
   const btnInscribir = document.getElementById("btn-inscribir");
   const seleccionesContainer = document.getElementById("selecciones-container");
+  const materiasSeleccionadas = new Set();
 
   // Agregar evento de cambio a los radios de carrera
   for (let i = 0; i < carreraRadios.length; i++) {
@@ -75,8 +76,18 @@ document.addEventListener("DOMContentLoaded", function() {
     const selectedHorario = document.querySelector("input[name='horario']:checked");
 
     if (selectedCarrera && selectedMateria && selectedHorario) {
-      const seleccion = crearSeleccion(selectedCarrera.value, selectedMateria.value, selectedHorario.value);
+      const materia = selectedMateria.value;
+      if (materiasSeleccionadas.has(materia)) {
+        // La materia ya ha sido seleccionada
+        alert("La materia ya ha sido seleccionada.");
+        return;
+      }
+
+      const seleccion = crearSeleccion(selectedCarrera.value, materia, selectedHorario.value);
       seleccionesContainer.appendChild(seleccion);
+
+      // Agregar la materia a la lista de materias seleccionadas
+      materiasSeleccionadas.add(materia);
 
       // Limpiar selecciones
       selectedMateria.checked = false;
@@ -111,6 +122,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
       // Limpiar selecciones
       seleccionesContainer.innerHTML = "";
+
+      // Limpiar la lista de materias seleccionadas
+      materiasSeleccionadas.clear();
 
       // Deshabilitar el botón de inscripción
       btnInscribir.disabled = true;
@@ -185,6 +199,9 @@ document.addEventListener("DOMContentLoaded", function() {
     btnEliminar.style.color = "red";
     btnEliminar.addEventListener("click", function() {
       seleccion.remove();
+
+      // Remover la materia de la lista de materias seleccionadas
+      materiasSeleccionadas.delete(materia);
     });
 
     const seleccionText = document.createElement("span");
