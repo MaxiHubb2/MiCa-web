@@ -1,232 +1,141 @@
 document.addEventListener("DOMContentLoaded", function() {
-  
-  // Definición de las materias por carrera
-  const materiasPorCarrera = {
-    Tecnicatura_En_Desarrollo_Web: {
-      materias: ['Programacion_basica_1', 'Introduccion_al_diseño_grafico', 'Informatica_general'],
-      horarios: [
-        ['Martes y Jueves: 08:00 a 12:00 hs', 'Lunes y Miercoles: 19:00 a 23:00 hs'],
-        ['Viernes: 08:00 a 12:00 hs', 'Jueves: 19:00 a 23:00 hs'],
-        ['Lunes: 08:00 a 12:00 hs y Sabados: 14:00 a 18:00 hs']
-      ],
-      comisiones: ['1', '2', '3'],
-    },
-    Tecnicatura_En_Desarrollo_De_Apps: {
-      materias: ['Programacion_avanzada', 'Diseño_de_aplicaciones_moviles', 'Base_de_datos'],
-      horarios: [
-        ['Lunes y Miercoles: 08:00 a 12:00 hs', 'Martes y Jueves: 19:00 a 23:00 hs'],
-        ['Miercoles: 19:00 a 23:00 hs', 'Viernes: 08:00 a 12:00 hs'],
-        ['Jueves: 08:00 a 12:00 hs y Sabados: 14:00 a 18:00 hs']
-      ],
-      comisiones: ['A', 'B', 'C'],
-    },
-  };
+  const carreraRadios = document.getElementsByName("carrera");
+  const materiaOptions = document.getElementById("materia-options");
+  const horarioOptions = document.getElementById("horario-options");
+  const btnInscribir = document.getElementById("btn-inscribir");
 
-  // Obtener elementos del DOM
-  const carreraSelect = document.getElementById("carrera");
-  const materiaSelect = document.getElementById("materia");
-  const horarioSelect = document.getElementById("horario");
-  const comisionDetails = document.getElementById("comision-details");
-  const agregarButton = document.getElementById("agregar");
-  const seleccionList = document.getElementById("seleccion-list");
-  const seleccionContainer = document.getElementById("seleccion-container");
-  const inscribirseButton = document.getElementById("inscribirse");
+  // Agregar evento de cambio a los radios de carrera
+  for (let i = 0; i < carreraRadios.length; i++) {
+    carreraRadios[i].addEventListener("change", function() {
+      const carreraValue = carreraRadios[i].value;
 
-  // Variable para almacenar las selecciones del usuario
-  const selecciones = {};
+      // Obtener las materias según la carrera seleccionada
+      const materias = obtenerMateriasPorCarrera(carreraValue);
 
-  // Evento change en la selección de carrera
-  carreraSelect.addEventListener("change", function () {
-    // Obtener la carrera seleccionada
-    const carrera = carreraSelect.value;
+      // Limpiar las opciones de materias y horarios
+      materiaOptions.innerHTML = "";
+      horarioOptions.innerHTML = "";
 
-    // Obtener las materias correspondientes a la carrera seleccionada
-    const materias = materiasPorCarrera[carrera] && materiasPorCarrera[carrera].materias || [];
+      // Crear opciones de materias
+      if (materias.length > 0) {
+        materias.forEach(function(materia) {
+          const materiaOption = document.createElement("label");
+          materiaOption.innerHTML = `<input type="radio" name="materia" value="${materia}" required>${materia}`;
+          materiaOptions.appendChild(materiaOption);
+        });
 
-    // Limpiar el listado de materias, horarios y los detalles de comisión
-    materiaSelect.innerHTML = "";
-    horarioSelect.innerHTML = "";
-    comisionDetails.textContent = "";
-
-    // Habilitar o deshabilitar el campo de selección de materia
-    materiaSelect.disabled = carrera === "";
-    horarioSelect.disabled = true;
-
-    if (carrera === "") {
-      // Agregar opción inicial en el campo de selección de materias cuando no se ha seleccionado una carrera
-      const initialOption = document.createElement("option");
-      initialOption.value = "";
-      initialOption.text = "Elige una carrera primero";
-      materiaSelect.appendChild(initialOption);
-    } else {
-      // Agregar opción inicial en blanco en el campo de selección de materias cuando se ha seleccionado una carrera
-      const emptyOption = document.createElement("option");
-      emptyOption.value = "";
-      emptyOption.text = "Elige una materia";
-      materiaSelect.appendChild(emptyOption);
-
-      // Generar las opciones de materias
-      for (let i = 0; i < materias.length; i++) {
-        const materia = materias[i];
-        const option = document.createElement("option");
-        option.value = materia;
-        option.text = materia.replace(/_/g, " ");
-        materiaSelect.appendChild(option);
-      }
-    }
-  });
-
-  // Evento change en la selección de materia
-  materiaSelect.addEventListener("change", function () {
-    const carrera = carreraSelect.value;
-    const materia = materiaSelect.value;
-    const index = materiasPorCarrera[carrera] ? materiasPorCarrera[carrera].materias.indexOf(materia) : -1;
-
-    if (index !== -1) {
-      const horarios = materiasPorCarrera[carrera].horarios[index] || [];
-      const comisiones = materiasPorCarrera[carrera].comisiones;
-
-      // Limpiar el listado de horarios
-      horarioSelect.innerHTML = "";
-
-      // Habilitar o deshabilitar el campo de selección de horario
-      horarioSelect.disabled = materia === "";
-
-      // Agregar opción inicial en el campo de selección de horarios
-      const initialOption = document.createElement("option");
-      initialOption.value = "";
-      initialOption.text = "Elige horario";
-      horarioSelect.appendChild(initialOption);
-
-      // Generar las opciones de horarios
-      for (let i = 0; i < horarios.length; i++) {
-        const horario = horarios[i];
-        const option = document.createElement("option");
-        option.value = horario;
-        option.text = horario;
-        horarioSelect.appendChild(option);
+        materiaOptions.disabled = false;
+      } else {
+        const noMateriasOption = document.createElement("label");
+        noMateriasOption.innerText = "No hay materias disponibles para esta carrera";
+        materiaOptions.appendChild(noMateriasOption);
+        materiaOptions.disabled = true;
       }
 
-      const comision = comisiones[index] ? comisiones[index] : "";
-      comisionDetails.textContent = "Comisión: " + comision;
-    } else {
-      horarioSelect.innerHTML = "";
-      comisionDetails.textContent = "";
-    }
-  });
-
-  // Evento click en el botón "Agregar selección"
-  agregarButton.addEventListener("click", function () {
-    const carrera = carreraSelect.value;
-    const materia = materiaSelect.value;
-    const horario = horarioSelect.value;
-
-    if (carrera !== "" && materia !== "" && horario !== "") {
-      // Verificar si hay alguna selección existente en el mismo horario
-      const seleccionEnMismoHorario = Object.values(selecciones).find((seleccion) => {
-        return (
-          seleccion.horario === horario
-        );
-      });
-
-      if (seleccionEnMismoHorario) {
-        alert("Ya has seleccionado otra materia en este horario");
-        return;
-      }
-
-      // Crear una selección con los datos elegidos
-      const seleccion = {
-        carrera: carrera.replace(/_/g, " "),
-        materia: materia.replace(/_/g, " "),
-        horario: horario
-      };
-
-      // Agregar la selección al objeto selecciones
-      const id = generarIdUnico();
-      selecciones[id] = seleccion;
-
-      // Crear un elemento de lista para mostrar la selección en el DOM
-      const listItem = document.createElement("li");
-      listItem.id = id;
-      listItem.innerHTML = `
-        <span class="cruz" onclick="eliminarSeleccion('${id}')">&#10006;</span>
-        <span>${seleccion.carrera} - ${seleccion.materia} - ${seleccion.horario}</span>
-      `;
-
-      // Agregar el elemento de lista al contenedor
-      seleccionList.appendChild(listItem);
-
-      // Mostrar el contenedor de selecciones
-      seleccionContainer.style.display = "block";
-    } else {
-      alert("Completa todos los campos");
-    }
-  });
-
-  // Evento click en el botón "Inscribirse"
-inscribirseButton.addEventListener("click", function () {
-  // Crear un arreglo de selecciones para pdfmake
-  const seleccionArray = Object.values(selecciones).map((seleccion) => {
-    return [seleccion.carrera, seleccion.materia, seleccion.horario];
-  });
-
-  // Definir la estructura del documento PDF
-  const docDefinition = {
-    content: [
-      { text: 'Inscripción a materias', style: 'header' },
-      { text: 'Selecciones:', style: 'subheader' },
-      {
-        table: {
-          headers: ['Carrera', 'Materia', 'Horario'],
-          body: seleccionArray
-        },
-        style: 'table'
-      }
-    ],
-    styles: {
-      header: {
-        fontSize: 18,
-        bold: true,
-        marginBottom: 20
-      },
-      subheader: {
-        fontSize: 14,
-        bold: true,
-        marginTop: 10,
-        marginBottom: 10
-      },
-      table: {
-        margin: [0, 5, 0, 15] // Margen superior, derecho, inferior e izquierdo
-      }
-    }
-  };
-  
-  // Generar el PDF con pdfmake
-  const pdfDoc = pdfMake.createPdf(docDefinition);
-  pdfDoc.download('inscripcion_materias.pdf');
-});
-
-
-  // Función para generar un ID único
-  function generarIdUnico() {
-    return Math.random().toString(36).substr(2, 9);
+      // Deshabilitar el botón de inscripción
+      btnInscribir.disabled = true;
+    });
   }
 
-  // Función para eliminar una selección
-  function eliminarSeleccion(id) {
-    // Eliminar la selección del objeto selecciones
-    delete selecciones[id];
+  materiaOptions.addEventListener("change", function() {
+    const selectedMateria = materiaOptions.querySelector("input[name='materia']:checked");
 
-    // Eliminar el elemento de lista del DOM
-    const listItem = document.getElementById(id);
-    if (listItem) {
-      seleccionList.removeChild(listItem);
-    }
+    if (selectedMateria) {
+      const horarios = obtenerHorariosPorMateria(selectedMateria.value);
 
-    // Si no hay más selecciones, ocultar el contenedor
-    if (Object.keys(selecciones).length === 0) {
-      seleccionContainer.style.display = "none";
+      // Limpiar las opciones de horarios
+      horarioOptions.innerHTML = "";
+
+      // Crear opciones de horarios
+      if (horarios.length > 0) {
+        horarios.forEach(function(horario) {
+          const horarioOption = document.createElement("label");
+          horarioOption.innerHTML = `<input type="radio" name="horario" value="${horario}" required>${horario}`;
+          horarioOptions.appendChild(horarioOption);
+        });
+
+        horarioOptions.disabled = false;
+      } else {
+        const noHorariosOption = document.createElement("label");
+        noHorariosOption.innerText = "No hay horarios disponibles para esta materia";
+        horarioOptions.appendChild(noHorariosOption);
+        horarioOptions.disabled = true;
+      }
+
+      // Deshabilitar el botón de inscripción
+      btnInscribir.disabled = true;
     }
+  });
+
+  horarioOptions.addEventListener("change", function() {
+    const selectedHorario = horarioOptions.querySelector("input[name='horario']:checked");
+
+    if (selectedHorario) {
+      // Habilitar el botón de inscripción
+      btnInscribir.disabled = false;
+    } else {
+      // Deshabilitar el botón de inscripción
+      btnInscribir.disabled = true;
+    }
+  });
+
+  btnInscribir.addEventListener("click", function() {
+    const selectedCarrera = document.querySelector("input[name='carrera']:checked");
+    const selectedMateria = document.querySelector("input[name='materia']:checked");
+    const selectedHorario = document.querySelector("input[name='horario']:checked");
+
+    if (selectedCarrera && selectedMateria && selectedHorario) {
+      // Generar el PDF de inscripción
+      generarPDFInscripcion(selectedCarrera.value, selectedMateria.value, selectedHorario.value);
+    }
+  });
+
+  function obtenerMateriasPorCarrera(carrera) {
+    // Aquí puedes hacer una llamada a una API o acceder a una base de datos para obtener las materias según la carrera seleccionada
+    // Por ahora, usaremos datos de ejemplo
+
+    const materiasPorCarrera = {
+      "Tecnicatura_En_Desarrollo_Web": ["Programación I", "Programación II", "Bases de Datos", "Diseño Web"],
+      "Tecnicatura_En_Desarrollo_De_Apps": ["Programación Móvil", "Diseño de Interfaces", "Desarrollo de Aplicaciones Híbridas"]
+    };
+
+    return materiasPorCarrera[carrera] || [];
   }
 
+  function obtenerHorariosPorMateria(materia) {
+    // Aquí puedes hacer una llamada a una API o acceder a una base de datos para obtener los horarios según la materia seleccionada
+    // Por ahora, usaremos datos de ejemplo
+
+    const horariosPorMateria = {
+      "Programación I": ["Lunes 8:00 - 10:00", "Miércoles 10:00 - 12:00"],
+      "Programación II": ["Martes 14:00 - 16:00", "Jueves 16:00 - 18:00"],
+      "Bases de Datos": ["Lunes 10:00 - 12:00", "Miércoles 14:00 - 16:00"],
+      "Diseño Web": ["Martes 10:00 - 12:00", "Jueves 10:00 - 12:00"],
+      "Programación Móvil": ["Viernes 8:00 - 10:00", "Sábado 10:00 - 12:00"],
+      "Diseño de Interfaces": ["Viernes 10:00 - 12:00", "Sábado 8:00 - 10:00"],
+      "Desarrollo de Aplicaciones Híbridas": ["Viernes 14:00 - 16:00", "Sábado 12:00 - 14:00"]
+    };
+
+    return horariosPorMateria[materia] || [];
+  }
+
+  function generarPDFInscripcion(carrera, materia, horario) {
+    const docDefinition = {
+      content: [
+        { text: "Formulario de Inscripción", style: "header" },
+        { text: "Carrera: " + carrera },
+        { text: "Materia: " + materia },
+        { text: "Horario: " + horario },
+      ],
+      styles: {
+        header: {
+          fontSize: 18,
+          bold: true,
+          margin: [0, 0, 0, 10]
+        }
+      }
+    };
+
+    pdfMake.createPdf(docDefinition).download("formulario_inscripcion.pdf");
+  }
 });

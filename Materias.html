@@ -1,118 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/materias.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manjari&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="img/perfil.svg">
 
-    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
-    <!-- pdfmake -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.68/pdfmake.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.68/vfs_fonts.js"></script>
-        <script src="js/inscripcion-materias.js"></script>
-    
-    <title>MiCa</title>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/materias.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manjari&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="img/perfil.svg">
+
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+  <!-- pdfmake -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.68/pdfmake.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.68/vfs_fonts.js"></script>
+  <script src="js/inscripcion-materias.js"></script>
+
+  <title>MiCa</title>
 </head>
 
 <body>
 
-    <header>
+  <header>
 
-        <div class="avatar">
-            <div class="nombre-logo"><h1>MiCa</h1></div>
-            <div class="avatar-text">
-                <p>Maximiliano Rabenko</p>
-                <p class="cierre-sesion">Cerrar Sesion</p>
-                <p class="editar-perfil">Editar perfil</p>
-            </div>
-            <img src="img/Big tv.jpg" alt="Avatar">
-            
+    <div class="avatar">
+      <div class="nombre-logo">
+        <h1>MiCa</h1>
+      </div>
+      <div class="avatar-text">
+        <p>Maximiliano Rabenko</p>
+        <p class="cierre-sesion">Cerrar Sesion</p>
+        <p class="editar-perfil">Editar perfil</p>
+      </div>
+      <img src="img/Big tv.jpg" alt="Avatar">
+    </div>
+
+  </header>
+
+  <div class="container">
+    <header class="header">
+      <h1><a href="index.html"><img src="img/Home.svg" alt="casa" width="30px" height="30px"></a> Mi Carrera</h1>
+    </header>
+
+    <main class="content">
+      <article class="article-inscripcion-materia">
+        <h1>Inscripción a materias</h1>
+        <p>Podes inscribirte a las materias según tu carrera</p>
+
+        <div>
+          <label>Carrera:</label>
+          <div>
+            <label><input type="radio" name="carrera" value="Tecnicatura_En_Desarrollo_Web" required>Tecnicatura en Desarrollo Web</label>
+            <label><input type="radio" name="carrera" value="Tecnicatura_En_Desarrollo_De_Apps" required>Tecnicatura en Desarrollo de Apps</label>
+          </div>
         </div>
         
 
-    </header>
+      </article>
+    </main>
 
-    <div class="container">
-        <header class="header">
-            <h1><a href="index.html"><img src="img/Home.svg" alt="casa" width="30px" height="30px"></a> Mi Carrera</h1>
-          </header>
-          
-        <main class="content">
-            <article class="article-inscripcion-materia">
-                <h1>Inscripción a materias</h1>
-                <p>Podes inscribirte a las materias según tu carrera</p>
+    <div class="adicional">
+      <div>
+        <label for="materia">Materia:</label>
+        <div id="materia-options" disabled>
+          <label><input type="radio" name="materia" value="" disabled>Elige una carrera primero</label>
+        </div>
+      </div>
 
-                <div>
-                  <label for="carrera">Carrera:</label>
-                  <select id="carrera">
-                    <option value="">Elige una carrera</option>
-                    <option value="Tecnicatura_En_Desarrollo_Web">Tecnicatura en Desarrollo Web</option>
-                    <option value="Tecnicatura_En_Desarrollo_De_Apps">Tecnicatura en Desarrollo de Apps</option>
-                  </select>
-                </div>
-
-            </article>
-        </main>
-
-        <div class="adicional">
-         <div>
-    <label for="materia">Materia:</label>
-    <select id="materia" disabled>
-      <option value="">Elige una carrera primero</option>
-    </select>
-  </div>
-  
-  <div>
-    <label for="horario">Horario:</label>
-    <select id="horario" disabled>
-      <option value="">Elige una materia primero</option>
-    </select>
-  </div>
-  
-  <div id="comision-details"></div>
-  
-  <button id="agregar">Agregar selección</button>
-  
-  <div id="seleccion-container">
-    <h2>Selecciones:</h2>
-    <ul id="seleccion-list"></ul>
-  </div>
-  
-          
-  <button id="inscribirse">Inscribirse</button>
-</div>
-        
-   
-
-        <footer class="footer">
-            <div class="footer-content">
-              <div class="footer-section contact">
-                <h4>Contacto</h4>
-                <p><a href="https://goo.gl/maps/GoWR1SnMRGW3dK9X8" target="_blank"> <img src="img/GPS.svg" alt="mapa" width="20px" height="20px">Calle falsa 123, Buenos aires, Argentina </a></p>
-                <p><img src="img/telefono-blanco.svg" alt="telefono" width="20px" height="20px"> 03030 -3456 </p>
-                <p><img src="img/email-blanco.svg" alt="email" width="20px" height="20px">Mica@bestoUniversity.com</p>
-              </div>
-              <div class="footer-enlaces">
-                <h4>Enlaces útiles</h4>
-                <ul>
-                  <li><a href="enlace-1" >Twitter</a></li>
-                  <li><a href="enlace-2">Facebook</a></li>
-                  <li><a href="enlace-3">Instagram</a></li>
-                </ul>
-              </div>
-              <div class="footer-section copyright">
-                <p class="footer-credits">© 2023 MiCa. Todos los derechos reservados.</p>
-              </div>
-            </div>
-          </footer>
-          
+      <div>
+        <label for="horario">Horario:</label>
+        <div id="horario-options" disabled>
+          <label><input type="radio" name="horario" value="" disabled>Elige una materia primero</label>
+        </div>
+      </div>
     </div>
 
-</body>
+    <button id="btn-inscribir" disabled>Inscribirse</button>
 
+  </div>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section contact">
+        <h4>Contacto</h4>
+        <p><a href="https://goo.gl/maps/GoWR1SnMRGW3dK9X8" target="_blank"> <img src="img/GPS.svg" alt="mapa" width="20px" height="20px">Calle falsa 123, Buenos aires, Argentina </a></p>
+        <p><img src="img/telefono-blanco.svg" alt="telefono" width="20px" height="20px"> 03030 -3456 </p>
+        <p><img src="img/email-blanco.svg" alt="email" width="20px" height="20px">Mica@bestoUniversity.com</p>
+      </div>
+      <div class="footer-enlaces">
+        <h4>Enlaces útiles</h4>
+        <ul>
+          <li><a href="enlace-1" >Twitter</a></li>
+          <li><a href="enlace-2">Facebook</a></li>
+          <li><a href="enlace-3">Instagram</a></li>
+        </ul>
+      </div>
+      <div class="footer-section copyright">
+        <p class="footer-credits">© 2023 MiCa. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+  
+</div>
+
+</body>
 
 </html>
