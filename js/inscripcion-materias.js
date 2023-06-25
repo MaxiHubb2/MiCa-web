@@ -2,7 +2,9 @@ document.addEventListener("DOMContentLoaded", function() {
   const carreraRadios = document.getElementsByName("carrera");
   const materiaOptions = document.getElementById("materia-options");
   const horarioOptions = document.getElementById("horario-options");
+  const btnAgregarMateria = document.getElementById("btn-agregar-materia");
   const btnInscribir = document.getElementById("btn-inscribir");
+  const seleccionesContainer = document.getElementById("selecciones-container");
 
   // Agregar evento de cambio a los radios de carrera
   for (let i = 0; i < carreraRadios.length; i++) {
@@ -67,26 +69,51 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 
-  horarioOptions.addEventListener("change", function() {
-    const selectedHorario = horarioOptions.querySelector("input[name='horario']:checked");
-
-    if (selectedHorario) {
-      // Habilitar el botón de inscripción
-      btnInscribir.disabled = false;
-    } else {
-      // Deshabilitar el botón de inscripción
-      btnInscribir.disabled = true;
-    }
-  });
-
-  btnInscribir.addEventListener("click", function() {
+  btnAgregarMateria.addEventListener("click", function() {
     const selectedCarrera = document.querySelector("input[name='carrera']:checked");
     const selectedMateria = document.querySelector("input[name='materia']:checked");
     const selectedHorario = document.querySelector("input[name='horario']:checked");
 
     if (selectedCarrera && selectedMateria && selectedHorario) {
+      const seleccion = crearSeleccion(selectedCarrera.value, selectedMateria.value, selectedHorario.value);
+      seleccionesContainer.appendChild(seleccion);
+
+      // Limpiar selecciones
+      selectedMateria.checked = false;
+      selectedHorario.checked = false;
+
+      // Deshabilitar el botón de inscripción
+      btnInscribir.disabled = false;
+    }
+  });
+
+  btnInscribir.addEventListener("click", function() {
+    const selecciones = seleccionesContainer.getElementsByClassName("seleccion");
+
+    if (selecciones.length > 0) {
+      const seleccionesArray = Array.from(selecciones);
+      const carreras = [];
+      const materias = [];
+      const horarios = [];
+
+      seleccionesArray.forEach(function(seleccion) {
+        const carrera = seleccion.getAttribute("data-carrera");
+        const materia = seleccion.getAttribute("data-materia");
+        const horario = seleccion.getAttribute("data-horario");
+
+        carreras.push(carrera);
+        materias.push(materia);
+        horarios.push(horario);
+      });
+
       // Generar el PDF de inscripción
-      generarPDFInscripcion(selectedCarrera.value, selectedMateria.value, selectedHorario.value);
+      generarPDFInscripcion(carreras, materias, horarios);
+
+      // Limpiar selecciones
+      seleccionesContainer.innerHTML = "";
+
+      // Deshabilitar el botón de inscripción
+      btnInscribir.disabled = true;
     }
   });
 
@@ -119,13 +146,10 @@ document.addEventListener("DOMContentLoaded", function() {
     return horariosPorMateria[materia] || [];
   }
 
-  function generarPDFInscripcion(carrera, materia, horario) {
+  function generarPDFInscripcion(carreras, materias, horarios) {
     const docDefinition = {
       content: [
         { text: "Formulario de Inscripción", style: "header" },
-        { text: "Carrera: " + carrera },
-        { text: "Materia: " + materia },
-        { text: "Horario: " + horario },
       ],
       styles: {
         header: {
@@ -136,6 +160,39 @@ document.addEventListener("DOMContentLoaded", function() {
       }
     };
 
+    carreras.forEach(function(carrera, index) {
+      docDefinition.content.push(
+        { text: `Carrera ${index + 1}: ${carrera}`, style: "subheader" },
+        { text: `Materia: ${materias[index]}`, style: "body" },
+        { text: `Horario: ${horarios[index]}`, style: "body" },
+        { text: "", margin: [0, 0, 0, 10] }
+      );
+    });
+
     pdfMake.createPdf(docDefinition).download("formulario_inscripcion.pdf");
+  }
+
+  function crearSeleccion(carrera, materia, horario) {
+    const seleccion = document.createElement("div");
+    seleccion.className = "seleccion";
+    seleccion.setAttribute("data-carrera", carrera);
+    seleccion.setAttribute("data-materia", materia);
+    seleccion.setAttribute("data-horario", horario);
+
+    const btnEliminar = document.createElement("button");
+    btnEliminar.className = "btn-eliminar";
+    btnEliminar.innerHTML = "&#10060;";
+    btnEliminar.style.color = "red";
+    btnEliminar.addEventListener("click", function() {
+      seleccion.remove();
+    });
+
+    const seleccionText = document.createElement("span");
+    seleccionText.innerText = `${carrera} - ${materia} - ${horario}`;
+
+    seleccion.appendChild(btnEliminar);
+    seleccion.appendChild(seleccionText);
+
+    return seleccion;
   }
 });
