@@ -7,7 +7,7 @@
 body {
   background: linear-gradient(to bottom, #f1eff3 0%,#ccd8dd 100%);
   font-family: 'Manjari', sans-serif;
-  
+
 }
 
 body header h1{
@@ -231,6 +231,43 @@ body header h1{
 }
 
 
+
+ h2 {
+  color: #333;
+}
+
+label {
+  font-weight: bold;
+}
+
+select, button {
+  margin-top: 5px;
+}
+
+#seleccion-container {
+  display: none;
+  margin-top: 20px;
+}
+
+#seleccion-container h2 {
+  margin-bottom: 10px;
+}
+
+#seleccion-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+#seleccion-list li {
+  margin-bottom: 5px;
+}
+
+.cruz {
+  cursor: pointer;
+  color: red;
+  margin-right: 5px;
+}
+
 .footer {
     background-color: #1e272e;
     padding: 20px;
@@ -284,35 +321,6 @@ a:visited {
   .header img {
     margin-right: 35px; /* Ajusta el margen derecho según sea necesario */
   }
-  .adicional .article-inscripcion-materia {
-    position: relative;
-  }
-  
-  .adicional .article-inscripcion-materia::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 255, 0.2);
-    animation: pulsate 2s ease-in-out infinite;
-  }
-  
-  @keyframes pulsate {
-    0% {
-      transform: scale(1);
-      opacity: 1;
-    }
-    50% {
-      transform: scale(1.2);
-      opacity: 0.8;
-    }
-    100% {
-      transform: scale(1);
-      opacity: 1;
-    }
-  }
   
 
 
@@ -363,6 +371,13 @@ ul{
     cursor: pointer;
     color: white;
 }
+
+  
+#horario option {
+    padding-top: 2px;
+    padding-bottom: 2px;
+  }
+  
 
 /* MEDIA QUERIES */
 
@@ -427,4 +442,3 @@ ul{
           align-items: center; /* Centra verticalmente el contenido */
         }
       }
-      
