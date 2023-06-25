@@ -41,8 +41,8 @@ body header h1{
   display: grid;
 }
 
-.container> .content .article-matricula,
-.container> .adicional .article-inscripciones{
+.container> .content .article-inscripciones,
+.container> .adicional .article-matricula{
   display: flex;
   align-items: center;
   justify-content: center;
@@ -55,9 +55,9 @@ body header h1{
   color: white;
 }
 
-.content .article-materia-en-curso,
-.content .article-materia-regularizada,
-.content .article-historial-academico {
+.content .article-inscripcion-materia,
+.content .article-inscripcion-final,
+.content .article-verificaciones {
   position: relative;
   background: #808e9b;
   padding: 30px;
@@ -66,8 +66,8 @@ body header h1{
 }
 
 
-.content .article-materia-regularizada::after,
-.content .article-historial-academico::after {
+.content .article-inscripcion-final::after,
+.content .article-verificaciones::after {
   content: '';
   position: absolute;
   top: 0;
@@ -79,7 +79,7 @@ body header h1{
   background-size: cover;
   box-shadow: 0 0 10px rgba(14, 1, 1, 0.5);
 }
-.content .article-materia-en-curso::after{
+.content .article-inscripcion-materia::after{
   content: '';
   position: absolute;
   top: 0;
@@ -92,9 +92,9 @@ body header h1{
   box-shadow: 0 0 10px rgba(14, 1, 1, 0.5);
 }
 
-.adicional .article-inscripcion-materia,
-.adicional .article-inscripcion-final,
-.adicional .article-verificaciones {
+
+.adicional .article-materia-en-curso,
+.adicional .article-materia-regularizada {
   position: relative;
   background: #808e9b;
   padding: 30px;
@@ -103,8 +103,8 @@ body header h1{
 }
 
 
-.adicional .article-inscripcion-final::after,
-.adicional .article-verificaciones::after {
+.adicional .article-materia-regularizada::after,
+.adicional .article-historial-academico::after {
   content: '';
   position: absolute;
   top: 0;
@@ -117,7 +117,7 @@ body header h1{
   box-shadow: 0 0 10px rgba(14, 1, 1, 0.5);
 }
 
-.adicional .article-inscripcion-materia::after{
+.adicional .article-materia-en-curso::after{
   content: '';
   position: absolute;
   top: 0;
@@ -130,12 +130,12 @@ body header h1{
   box-shadow: 0 0 10px rgba(14, 1, 1, 0.5);
 }
 
-.content .article-materia-en-curso,
-.content .article-materia-regularizada,
-.content .article-historial-academico,
-.adicional .article-inscripcion-materia,
-.adicional .article-inscripcion-final,
-.adicional .article-verificaciones {
+.content .article-inscripcion-materia,
+.content .article-inscripcion-final,
+.content .article-verificaciones,
+.adicional .article-materia-en-curso,
+.adicional .article-materia-regularizada,
+.adicional .article-historial-academico {
   position: relative;
   background: #808e9b;
   padding: 30px;
@@ -146,12 +146,12 @@ body header h1{
   transition: background-color 0.3s ease; /* Agrega una transición suave */
 }
 
-.content .article-materia-en-curso:hover,
-.content .article-materia-regularizada:hover,
-.content .article-historial-academico:hover,
-.adicional .article-inscripcion-materia:hover,
-.adicional .article-inscripcion-final:hover,
-.adicional .article-verificaciones:hover {
+.content .article-inscripcion-materia:hover,
+.content .article-inscripcion-final:hover,
+.content .article-verificaciones:hover,
+.adicional .article-materia-en-curso:hover,
+.adicional .article-materia-regularizada:hover,
+.adicional .article-historial-academico:hover {
   background-color: #333; /* Cambia el color de fondo al pasar el cursor */
 }
 
@@ -159,8 +159,6 @@ body header h1{
 .content .article p {
     padding: 5px;
 }
-
-
   
   .avatar img {
     width: 50px;
@@ -284,11 +282,11 @@ a:visited {
   .header img {
     margin-right: 35px; /* Ajusta el margen derecho según sea necesario */
   }
-  .adicional .article-inscripcion-materia {
+  .content .article-inscripcion-materia {
     position: relative;
   }
   
-  .adicional .article-inscripcion-materia::before {
+  .content .article-inscripcion-materia::before {
     content: "";
     position: absolute;
     top: 0;
@@ -375,9 +373,7 @@ ul{
         grid-column: 1 / -1;
     }
     
-    .content .article-matricula::after,
-    .content .article-perfil::after,
-    .content .article-materia-actual::after {
+    .content .article-inscripciones::after {
         max-width: 60px; /* Ajusta el tamaño de la imagen */
         height: 60px; /* Ajusta el tamaño de la imagen */
     }
@@ -388,10 +384,6 @@ ul{
 
     .content .article p {
         font-size: 1em; /* Ajusta el tamaño de la letra */
-    }
-
-    .container .related-post {
-        grid-column: 1/-1;
     }
         
     .footer {
