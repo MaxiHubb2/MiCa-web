@@ -1,30 +1,34 @@
-*{
-    margin: 0;
-    padding: 0;
-    
+/* Reset de estilos para todos los elementos */
+* {
+  margin: 0;
+  padding: 0;
 }
 
+/* Estilos generales del body */
 body {
   background: linear-gradient(to bottom, #f1eff3 0%,#ccd8dd 100%);
   font-family: 'Manjari', sans-serif;
-
 }
 
-body header h1{
-    padding: 10px 20px;
+/* Estilos del título en el header */
+body header h1 {
+  padding: 10px 20px;
 }
 
-/* HEADER */
-
+/* Estilos del título principal */
 .title h1 {
-    text-align: center;
-    font-size: 2.9em;
-    text-transform: uppercase;
+  text-align: center;
+  font-size: 2.9em;
+  text-transform: uppercase;
 }
 
-/* CONTAINER */
+/* Estilos para el enlace del título en el header al pasar el cursor */
+header.header h1 a:hover {
+  transform: translateY(2px);
+}
 
-.container{
+/* Estilos del contenedor principal */
+.container {
   width: 100%;
   max-width: 1300px;
   margin: 0.6em auto;
@@ -33,21 +37,24 @@ body header h1{
   grid-template-columns: repeat(1, 1fr) 50%;
 }
 
+/* Estilos de los contenidos principales y adicionales */
 .container > .content,
-.container >.adicional{
+.container > .adicional {
   background: #fff;
   border: 1px solid #000000;
   padding: 20px;
   display: grid;
 }
 
-.container> .content .article-matricula,
-.container> .adicional .article-inscripciones{
+/* Estilos de los artículos de matrícula y de inscripciones */
+.container > .content .article-matricula,
+.container > .adicional .article-inscripciones {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+/* Estilos de los headers y footers de los contenidos principales y adicionales */
 .container > .header,
 .container > .footer {
   grid-column: 1 / -1; /* Ocupa todas las columnas */
@@ -55,6 +62,7 @@ body header h1{
   color: white;
 }
 
+/* Estilos de los artículos de materias en curso, materias regularizadas y historial académico */
 .content .article-materia-en-curso,
 .content .article-materia-regularizada,
 .content .article-historial-academico {
@@ -65,7 +73,7 @@ body header h1{
   color: #dfe6e9;
 }
 
-
+/* Estilos de los íconos de las materias regularizadas y del historial académico */
 .content .article-materia-regularizada::after,
 .content .article-historial-academico::after {
   content: '';
@@ -79,7 +87,9 @@ body header h1{
   background-size: cover;
   box-shadow: 0 0 10px rgba(14, 1, 1, 0.5);
 }
-.content .article-materia-en-curso::after{
+
+/* Estilos del ícono de la materia en curso */
+.content .article-materia-en-curso::after {
   content: '';
   position: absolute;
   top: 0;
@@ -92,6 +102,7 @@ body header h1{
   box-shadow: 0 0 10px rgba(14, 1, 1, 0.5);
 }
 
+/* Estilos de los artículos de inscripción a materias, inscripción a finales y verificaciones */
 .adicional .article-inscripcion-materia,
 .adicional .article-inscripcion-final,
 .adicional .article-verificaciones {
@@ -102,7 +113,7 @@ body header h1{
   color: #dfe6e9;
 }
 
-
+/* Estilos de los íconos de la inscripción a finales y de las verificaciones */
 .adicional .article-inscripcion-final::after,
 .adicional .article-verificaciones::after {
   content: '';
@@ -117,7 +128,8 @@ body header h1{
   box-shadow: 0 0 10px rgba(14, 1, 1, 0.5);
 }
 
-.adicional .article-inscripcion-materia::after{
+/* Estilos del ícono de la inscripción a materias */
+.adicional .article-inscripcion-materia::after {
   content: '';
   position: absolute;
   top: 0;
@@ -130,6 +142,7 @@ body header h1{
   box-shadow: 0 0 10px rgba(14, 1, 1, 0.5);
 }
 
+/* Estilos comunes de los artículos de materias y de inscripciones */
 .content .article-materia-en-curso,
 .content .article-materia-regularizada,
 .content .article-historial-academico,
@@ -146,6 +159,7 @@ body header h1{
   transition: background-color 0.3s ease; /* Agrega una transición suave */
 }
 
+/* Estilos al pasar el cursor sobre los artículos de materias y de inscripciones */
 .content .article-materia-en-curso:hover,
 .content .article-materia-regularizada:hover,
 .content .article-historial-academico:hover,
@@ -155,38 +169,39 @@ body header h1{
   background-color: #333; /* Cambia el color de fondo al pasar el cursor */
 }
 
+/* Estilos del título y el párrafo dentro de los artículos */
 .content .article h1,
 .content .article p {
-    padding: 5px;
+  padding: 5px;
 }
 
+/* Estilos del avatar */
+.avatar img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 2px;
+  margin-top: 5px;
+}
 
-  
-  .avatar img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin-right: 2px;
-    margin-top: 5px;
-  }
+/* Estilos del texto del avatar */
+.avatar-text p {
+  font-size: 15px;
+  color: #619bdd;
+  display: flex;
+  justify-content: end;
+  margin-right: 14px;
+}
 
+/* Estilos del contenedor del avatar */
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  padding: 5px 15px;
+}
 
-  .avatar-text p {
-    font-size: 15px;
-    color: #619bdd;
-    display: flex;
-    justify-content: end;
-    margin-right: 14px;
-  }
-
-  .avatar {
-    display: flex;
-    align-items: center;
-    justify-content: end;
-    padding: 5px 15px;
-  }
-
-
+/* Estilos del enlace "Editar perfil" en el avatar */
 .avatar .editar-perfil {
   margin-top: 5px;
   margin-right: 8em;
@@ -196,7 +211,8 @@ body header h1{
   position: relative;
 }
 
-.avatar .cierre-sesion{
+/* Estilos del enlace "Cerrar sesión" en el avatar */
+.avatar .cierre-sesion {
   margin-top: 5px;
   margin-left: 6em; /* Ajusta el margen izquierdo según sea necesario */
   font-weight: bold;
@@ -205,6 +221,7 @@ body header h1{
   position: absolute;
 }
 
+/* Estilos del subrayado al pasar el cursor sobre los enlaces del avatar */
 .avatar .cierre-sesion::after,
 .avatar .editar-perfil::after {
   content: '';
@@ -217,228 +234,266 @@ body header h1{
   transition: background-color 0.3s ease; /* Agrega una transición suave */
 }
 
+/* Estilos al pasar el cursor sobre los enlaces del avatar */
 .avatar .cierre-sesion:hover,
-.avatar .editar-perfil:hover{
+.avatar .editar-perfil:hover {
   cursor: pointer;
   text-decoration: underline;
 }
 
-
-.nombre-logo{
-    position: absolute;
-    left: 0.5em;
-    
+/* Estilos del nombre del logo */
+.nombre-logo {
+  position: absolute;
+  left: 0.5em;
+  text-decoration: none;
+  color: inherit;
 }
 
+/* Estilos del nombre del logo después de hacer clic */
+a.nombre-logo[href="index.html"]:visited {
+  color: inherit; /* Hereda el color del texto después de hacer clic */
+}
 
-
- h2 {
+/* Estilos del h2 */
+h2 {
   color: #333;
 }
 
+/* Estilos de las etiquetas */
 label {
   font-weight: bold;
 }
 
-select, button {
+/* Estilos del select y el button */
+select,
+button {
   margin-top: 5px;
 }
 
+/* Estilos del contenedor de selección */
 #seleccion-container {
   display: none;
   margin-top: 20px;
 }
 
+/* Estilos del h2 dentro del contenedor de selección */
 #seleccion-container h2 {
   margin-bottom: 10px;
 }
 
+/* Estilos de la lista dentro del contenedor de selección */
 #seleccion-list {
   list-style-type: none;
   padding: 0;
 }
 
+/* Estilos de los elementos de la lista dentro del contenedor de selección */
 #seleccion-list li {
   margin-bottom: 5px;
 }
 
-.cruz {
+/* Estilos del botón de eliminar */
+.btn-eliminar {
   cursor: pointer;
-  color: red;
+}
+
+/* Estilos del contenedor de selecciones */
+#selecciones-container {
+  background-color: #f1f1f1;
+  padding: 10px;
+  border: 1px solid black;
+}
+
+/* Estilos del footer */
+.footer {
+  background-color: #1e272e;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto 1fr auto;
+  gap: 5px;
+  color: white;
+}
+
+/* Estilos del contenido del footer */
+.footer-content {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 5px;
+}
+
+/* Estilos de los créditos del footer */
+.footer-credits {
+  text-align: right;
+  grid-row: 3;
+  margin-top: 5em;
+}
+
+/* Estilos de la sección de contacto en el footer */
+.footer-section.contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Estilos del título h4 en la sección de contacto del footer */
+.footer-section.contact h4 {
+  margin-bottom: 10px;
+}
+
+/* Estilos de la imagen en la sección de contacto del footer */
+.footer-section.contact img {
   margin-right: 5px;
 }
 
-.footer {
-    background-color: #1e272e;
-    padding: 20px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: auto 1fr auto; /* Nueva propiedad para definir las filas */
-    gap: 5px;
-    color: white;
-  }
-  
-  .footer-content {
-    grid-column: 1 / -1; /* Ocupa todas las columnas */
-    grid-row: 2; /* Se ubica en la segunda fila */
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 5px;
-    
-  }
-  
-  .footer-credits {
-    text-align: right;
-    grid-row: 3; /* Se ubica en la tercera fila */
-    margin-top: 5em;
-  }
-  
-.footer-section.contact {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    
-  }
-
-  .footer-section.contact h4{
-    margin-bottom: 10px;    
-  }
-
-  .footer-section.contact img {
-    margin-right: 5px;
-}
-  
+/* Estilos del color de enlaces visitados */
 a:visited {
-    color: white; /* Cambia el color a negro después de hacer clic */
-    text-decoration: none;
-  }
-  
-  .header h1 {
-    display: inline-flex;
-    align-items: center;
-  }
-  
-  .header img {
-    margin-right: 35px; /* Ajusta el margen derecho según sea necesario */
-  }
-  
+  color: white;
+  text-decoration: none;
+}
 
+/* Estilos del título h1 en el header */
+.header h1 {
+  display: inline-flex;
+  align-items: center;
+}
 
+/* Estilos de la imagen en el header */
+.header img {
+  margin-right: 35px;
+}
+
+/* Estilos de la lista en el footer */
 .footer ul {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-  
-  .footer li {
-    margin: 0 5px;
-  }
-  
-  .footer li:last-child {
-    margin-right: 0;
-  }
-  
-  .footer li a {
-    display: flex;
-    align-items: center;
-    color: #619bdd;
-    text-decoration: none;
-  }
-  
-  .footer li a::after {
-    content: "";
-    display: inline-block;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background-color: white;
-    margin-left: 5px;
-  }
-
-  .footer .footer-enlaces {
-    flex: 1;
-    text-align: center;
-  }
-  
-ul{
-    list-style: none;
-    
-}
-  
-.footer li a:hover{
-    cursor: pointer;
-    color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
-  
+/* Estilos de los elementos de la lista en el footer */
+.footer li {
+  margin: 0 5px;
+}
+
+/* Estilos del último elemento de la lista en el footer */
+.footer li:last-child {
+  margin-right: 0;
+}
+
+/* Estilos de los enlaces en la lista del footer */
+.footer li a {
+  display: flex;
+  align-items: center;
+  color: #619bdd;
+  text-decoration: none;
+}
+
+/* Estilos del punto después de los enlaces en la lista del footer */
+.footer li a::after {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: white;
+  margin-left: 5px;
+}
+
+/* Estilos del enlace en el footer */
+.footer .footer-enlaces {
+  flex: 1;
+  text-align: center;
+}
+
+/* Estilos generales de las listas */
+ul {
+  list-style: none;
+}
+
+/* Estilos al pasar el cursor sobre los enlaces en el footer */
+.footer li a:hover {
+  cursor: pointer;
+  color: white;
+}
+
+/* Estilos del option en el horario */
 #horario option {
-    padding-top: 2px;
-    padding-bottom: 2px;
-  }
-  
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
 
-/* MEDIA QUERIES */
+/* Media Queries */
 
 @media screen and (max-width: 768px) {
-    .header {
-        text-align: start;
-        
-    }
-    .container .content {
-        grid-column: 1 / -1;
-    }
-    
-    .content .article-matricula::after,
-    .content .article-perfil::after,
-    .content .article-materia-actual::after {
-        max-width: 60px; /* Ajusta el tamaño de la imagen */
-        height: 60px; /* Ajusta el tamaño de la imagen */
-    }
+  /* Estilos del header en dispositivos más pequeños */
+  .header {
+    text-align: start;
+  }
 
-    .content .article h1 {
-        font-size: 1.5em; /* Ajusta el tamaño de la letra */
-    }
+  /* Estilos del contenido en dispositivos más pequeños */
+  .container .content {
+    grid-column: 1 / -1;
+  }
 
-    .content .article p {
-        font-size: 1em; /* Ajusta el tamaño de la letra */
-    }
+  /* Estilos de los artículos en dispositivos más pequeños */
+  .content .article-matricula::after,
+  .content .article-perfil::after,
+  .content .article-materia-actual::after {
+    max-width: 60px;
+    height: 60px;
+  }
 
-    .container .related-post {
-        grid-column: 1/-1;
-    }
-        
-    .footer {
-          grid-template-rows: auto auto auto; /* Restaura el número de filas del grid */
-           /* Ajusta el margen superior del footer */
-        }
-      
-        .footer-content {
-          grid-template-columns: 1fr; /* Cambia a una sola columna en dispositivos más pequeños */
-          grid-row: 2; /* Ubica el footer-content en la segunda fila */
-          margin-top: 0; /* Elimina el margen superior excesivo */
-        }
-        
-        .footer .footer-enlaces{
-            margin-top: 10px;
+  /* Estilos del título h1 en dispositivos más pequeños */
+  .content .article h1 {
+    font-size: 1.5em;
+  }
 
-        }
+  /* Estilos del párrafo en dispositivos más pequeños */
+  .content .article p {
+    font-size: 1em;
+  }
 
-        .footer-section.contact {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center; /* Centra verticalmente el contenido */
-          }
-          
-        
-        .footer-credits {
-          grid-row: 3; /* Ubica el footer-credits en la tercera fila */
-          margin-top: 10px; /* Elimina el margen superior excesivo */
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center; /* Centra verticalmente el contenido */
-        }
-      }
+  /* Estilos de los related posts en dispositivos más pequeños */
+  .container .related-post {
+    grid-column: 1/-1;
+  }
+
+  /* Estilos del footer en dispositivos más pequeños */
+  .footer {
+    grid-template-rows: auto auto auto;
+  }
+
+  /* Estilos del contenido del footer en dispositivos más pequeños */
+  .footer-content {
+    grid-template-columns: 1fr;
+    grid-row: 2;
+    margin-top: 0;
+  }
+
+  /* Estilos de los enlaces del footer en dispositivos más pequeños */
+  .footer .footer-enlaces {
+    margin-top: 10px;
+  }
+
+  /* Estilos de la sección de contacto en el footer en dispositivos más pequeños */
+  .footer-section.contact {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Estilos de los créditos del footer en dispositivos más pequeños */
+  .footer-credits {
+    grid-row: 3;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}

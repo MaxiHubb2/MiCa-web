@@ -6,20 +6,18 @@ document.addEventListener("DOMContentLoaded", function() {
   const btnInscribir = document.getElementById("btn-inscribir");
   const seleccionesContainer = document.getElementById("selecciones-container");
   const materiasSeleccionadas = new Set();
+  const tituloMateriasSeleccionadas = document.createElement("h2");
 
-  // Agregar evento de cambio a los radios de carrera
+  tituloMateriasSeleccionadas.innerText = "Materias seleccionadas";
+
   for (let i = 0; i < carreraRadios.length; i++) {
     carreraRadios[i].addEventListener("change", function() {
       const carreraValue = carreraRadios[i].value;
-
-      // Obtener las materias según la carrera seleccionada
       const materias = obtenerMateriasPorCarrera(carreraValue);
 
-      // Limpiar las opciones de materias y horarios
       materiaOptions.innerHTML = "";
       horarioOptions.innerHTML = "";
 
-      // Crear opciones de materias
       if (materias.length > 0) {
         materias.forEach(function(materia) {
           const materiaOption = document.createElement("label");
@@ -35,8 +33,12 @@ document.addEventListener("DOMContentLoaded", function() {
         materiaOptions.disabled = true;
       }
 
-      // Deshabilitar el botón de inscripción
-      btnInscribir.disabled = true;
+      const selectedMateria = materiaOptions.querySelector("input[name='materia']:checked");
+      if (selectedMateria) {
+        btnInscribir.disabled = false;
+      } else {
+        btnInscribir.disabled = true;
+      }
     });
   }
 
@@ -46,10 +48,8 @@ document.addEventListener("DOMContentLoaded", function() {
     if (selectedMateria) {
       const horarios = obtenerHorariosPorMateria(selectedMateria.value);
 
-      // Limpiar las opciones de horarios
       horarioOptions.innerHTML = "";
 
-      // Crear opciones de horarios
       if (horarios.length > 0) {
         horarios.forEach(function(horario) {
           const horarioOption = document.createElement("label");
@@ -65,7 +65,6 @@ document.addEventListener("DOMContentLoaded", function() {
         horarioOptions.disabled = true;
       }
 
-      // Deshabilitar el botón de inscripción
       btnInscribir.disabled = true;
     }
   });
@@ -77,69 +76,61 @@ document.addEventListener("DOMContentLoaded", function() {
 
     if (selectedCarrera && selectedMateria && selectedHorario) {
       const materia = selectedMateria.value;
-      if (materiasSeleccionadas.has(materia)) {
-        // La materia ya ha sido seleccionada
-        alert("La materia ya ha sido seleccionada.");
+      const horario = selectedHorario.value;
+
+      if (materiasSeleccionadas.has(materia) && horarioSeleccionado(materia, horario)) {
+        alert("La materia con el mismo horario ya ha sido seleccionada.");
+        return;
+      } else if (horarioSeleccionado(materia, horario)) {
+        alert("El horario ya ha sido seleccionado para otra materia.");
         return;
       }
 
       const carrera = selectedCarrera.value.replace(/_/g, " ");
-      const seleccion = crearSeleccion(carrera, materia, selectedHorario.value);
+      const seleccion = crearSeleccion(carrera, materia, horario);
       seleccionesContainer.appendChild(seleccion);
 
-      // Agregar la materia a la lista de materias seleccionadas
       materiasSeleccionadas.add(materia);
 
-      // Limpiar selecciones
       selectedMateria.checked = false;
       selectedHorario.checked = false;
 
-      // Habilitar el botón de inscripción
       btnInscribir.disabled = false;
     }
   });
 
   btnInscribir.addEventListener("click", function() {
     const selecciones = seleccionesContainer.getElementsByClassName("seleccion");
-  
+
     if (selecciones.length > 0) {
       const seleccionesArray = Array.from(selecciones);
       const carreras = [];
       const materias = [];
       const horarios = [];
-  
+
       seleccionesArray.forEach(function(seleccion) {
         const carrera = seleccion.getAttribute("data-carrera");
         const materia = seleccion.getAttribute("data-materia");
         const horario = seleccion.getAttribute("data-horario");
-  
+
         carreras.push(carrera);
         materias.push(materia);
         horarios.push(horario);
       });
-  
-      // Generar el PDF de inscripción
+
       generarPDFInscripcion(carreras, materias, horarios);
-  
-      // Limpiar selecciones
+
       seleccionesContainer.innerHTML = "";
-  
-      // Limpiar la lista de materias seleccionadas
+
       materiasSeleccionadas.clear();
-  
-      // Deshabilitar el botón de inscripción
+
       btnInscribir.disabled = true;
     } else {
-      // Mostrar un mensaje de error si no hay selecciones
       alert("Debes seleccionar al menos una materia antes de generar el PDF de inscripción.");
     }
   });
-  
 
   function obtenerMateriasPorCarrera(carrera) {
-    // Aquí puedes hacer una llamada a una API o acceder a una base de datos para obtener las materias según la carrera seleccionada
-    // Por ahora, usaremos datos de ejemplo
-
     const materiasPorCarrera = {
       "Tecnicatura_En_Desarrollo_Web": ["Programación I", "Programación II", "Bases de Datos", "Diseño Web"],
       "Tecnicatura_En_Desarrollo_De_Apps": ["Programación Móvil", "Diseño de Interfaces", "Desarrollo de Aplicaciones Híbridas"]
@@ -149,9 +140,6 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   function obtenerHorariosPorMateria(materia) {
-    // Aquí puedes hacer una llamada a una API o acceder a una base de datos para obtener los horarios según la materia seleccionada
-    // Por ahora, usaremos datos de ejemplo
-
     const horariosPorMateria = {
       "Programación I": ["Lunes 8:00 - 10:00", "Miércoles 10:00 - 12:00"],
       "Programación II": ["Martes 14:00 - 16:00", "Jueves 16:00 - 18:00"],
@@ -204,11 +192,9 @@ document.addEventListener("DOMContentLoaded", function() {
     btnEliminar.style.color = "red";
     btnEliminar.addEventListener("click", function() {
       seleccion.remove();
-
-      // Remover la materia de la lista de materias seleccionadas
       materiasSeleccionadas.delete(materia);
     });
-
+    
     const seleccionText = document.createElement("span");
     seleccionText.innerText = `${carrera} - ${materia} - ${horario}`;
 
@@ -217,4 +203,23 @@ document.addEventListener("DOMContentLoaded", function() {
 
     return seleccion;
   }
+
+  function horarioSeleccionado(materia, horario) {
+    const selecciones = seleccionesContainer.getElementsByClassName("seleccion");
+    const seleccionesArray = Array.from(selecciones);
+    
+    for (let i = 0; i < seleccionesArray.length; i++) {
+      const seleccion = seleccionesArray[i];
+      const seleccionMateria = seleccion.getAttribute("data-materia");
+      const seleccionHorario = seleccion.getAttribute("data-horario");
+      
+      if (materia === seleccionMateria && horario === seleccionHorario) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  seleccionesContainer.appendChild(tituloMateriasSeleccionadas);
 });

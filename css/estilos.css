@@ -21,6 +21,12 @@ body header h1{
     font-size: 2.9em;
     text-transform: uppercase;
 }
+header.header h1 a:hover {
+  transform: translateY(2px);
+
+}
+
+
 
 /* CONTAINER */
 
@@ -221,11 +227,16 @@ body header h1{
   text-decoration: underline;
 }
 
-
 .nombre-logo{
-    position: absolute;
-    left: 0.5em;
-    
+  position: absolute;
+  left: 0.5em;
+  text-decoration: none;
+  color: inherit;
+  
+}
+
+a.nombre-logo[href="index.html"]:visited {
+color: inherit; /* Hereda el color del texto después de hacer clic */
 }
 
 
@@ -369,8 +380,9 @@ ul{
         text-align: start;
         
     }
-    .container .content {
-        grid-column: 1 / -1;
+    .container .content,
+    .container .adicional {
+      grid-column: 1/-1;
     }
     
     .content .article-inscripciones::after {
