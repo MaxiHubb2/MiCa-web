@@ -475,8 +475,7 @@ ul{
   }
 
   .header h1 img {
-    margin-right: 5px; /* Ajusta el margen derecho según sea necesario */
-    margin-left: -15px; /* Mueve la imagen hacia la izquierda */
+    margin-right: 4px; /* Ajusta el margen derecho según sea necesario */
   }
 
   .mi-carrera-text {
