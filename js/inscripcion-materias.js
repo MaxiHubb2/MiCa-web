@@ -83,7 +83,8 @@ document.addEventListener("DOMContentLoaded", function() {
         return;
       }
 
-      const seleccion = crearSeleccion(selectedCarrera.value, materia, selectedHorario.value);
+      const carrera = selectedCarrera.value.replace(/_/g, " ");
+      const seleccion = crearSeleccion(carrera, materia, selectedHorario.value);
       seleccionesContainer.appendChild(seleccion);
 
       // Agregar la materia a la lista de materias seleccionadas
@@ -93,43 +94,47 @@ document.addEventListener("DOMContentLoaded", function() {
       selectedMateria.checked = false;
       selectedHorario.checked = false;
 
-      // Deshabilitar el botón de inscripción
+      // Habilitar el botón de inscripción
       btnInscribir.disabled = false;
     }
   });
 
   btnInscribir.addEventListener("click", function() {
     const selecciones = seleccionesContainer.getElementsByClassName("seleccion");
-
+  
     if (selecciones.length > 0) {
       const seleccionesArray = Array.from(selecciones);
       const carreras = [];
       const materias = [];
       const horarios = [];
-
+  
       seleccionesArray.forEach(function(seleccion) {
         const carrera = seleccion.getAttribute("data-carrera");
         const materia = seleccion.getAttribute("data-materia");
         const horario = seleccion.getAttribute("data-horario");
-
+  
         carreras.push(carrera);
         materias.push(materia);
         horarios.push(horario);
       });
-
+  
       // Generar el PDF de inscripción
       generarPDFInscripcion(carreras, materias, horarios);
-
+  
       // Limpiar selecciones
       seleccionesContainer.innerHTML = "";
-
+  
       // Limpiar la lista de materias seleccionadas
       materiasSeleccionadas.clear();
-
+  
       // Deshabilitar el botón de inscripción
       btnInscribir.disabled = true;
+    } else {
+      // Mostrar un mensaje de error si no hay selecciones
+      alert("Debes seleccionar al menos una materia antes de generar el PDF de inscripción.");
     }
   });
+  
 
   function obtenerMateriasPorCarrera(carrera) {
     // Aquí puedes hacer una llamada a una API o acceder a una base de datos para obtener las materias según la carrera seleccionada
