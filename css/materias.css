@@ -496,4 +496,62 @@ ul {
     justify-content: center;
     align-items: center;
   }
+
+  @media screen and (max-width: 360px) and (max-height: 740px) {
+    .content> .article-inscripcion-materia::after,
+    .content> .article-inscripcion-final::after,
+    .content> .article-verificaciones::after,
+    .adicional> .article-historial-academico::after,
+    .adicional> .article-materia-en-curso::after,
+    .adicional> .article-materia-regularizada::after {
+   
+      width: 100%;
+      max-width: 40px;
+      height: 40px;
+  }
+
+  .footer-credits {
+    text-align: center;
+  }
+
+  .nombre-logo {
+    position: absolute;
+    top: 11px;
+    left: -8px;
+  }
+  .avatar-text {
+    display: none;
+  }
+  
+  .avatar-text.show {
+    display: block;
+  }
+  
+  .container {
+		text-align: center;
+	}
+  
+  .header {
+    text-align: center; /* Alinea el contenido al centro */
+  }
+
+  .header h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .header h1 img {
+    margin-right: 5px; /* Ajusta el margen derecho según sea necesario */
+    margin-left: -15px; /* Mueve la imagen hacia la izquierda */
+  }
+
+  .mi-carrera-text {
+    display: none; /* Oculta el contenido */
+  }
+
+  header.header h1 a:hover {
+    transform: translateY(2px);
+  
+  }
 }
