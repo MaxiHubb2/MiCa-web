@@ -34,7 +34,7 @@ header.header h1 a:hover {
   margin: 0.6em auto;
   display: grid;
   gap: 1.2em;
-  grid-template-columns: repeat(1, 1fr) 50%;
+  grid-template-columns: repeat(1, 1fr) 49%;
 }
 
 .container > .content,
