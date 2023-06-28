@@ -133,13 +133,13 @@ header.header h1 a:hover {
   content: '';
   position: absolute;
   top: 0;
-  right: 2px;
-  width: 100%;
-  max-width: 85px;
-  height: 85px;
-  background-size: cover;
+  right: 290px;
+  bottom: 0;
+  left: 0;
   background-image: url(/img/matricula.svg);
-  box-shadow: 0 0 10px rgba(14, 1, 1, 0.5);
+  background-size: cover;
+  opacity: 0.8; /* Ajusta el valor de la opacidad según tus necesidades */
+  z-index: -1; /* Asegura que la imagen esté detrás del contenido */
 }
 
 /* Estilos comunes de los artículos de materias y de inscripciones */

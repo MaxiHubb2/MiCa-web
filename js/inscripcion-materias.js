@@ -32,7 +32,9 @@ document.addEventListener("DOMContentLoaded", function() {
         materiaOptions.appendChild(noMateriasOption);
         materiaOptions.disabled = true;
       }
+      horarioOptions.innerHTML = "<span class='leyenda'><strong>Elige una materia primero</strong></span>";
 
+      materiaOptions.disabled = true;
       const selectedMateria = materiaOptions.querySelector("input[name='materia']:checked");
       if (selectedMateria) {
         btnInscribir.disabled = false;
@@ -97,6 +99,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
       btnInscribir.disabled = false;
     }
+
+    btnAgregarMateria.style.width = "100px"; // Cambia el ancho según tus necesidades
+    btnAgregarMateria.style.height = "50px"; // Cambia la altura según tus necesidades
   });
 
   btnInscribir.addEventListener("click", function() {
@@ -169,7 +174,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     carreras.forEach(function(carrera, index) {
       docDefinition.content.push(
-        { text: `Carrera ${index + 1}: ${carrera}`, style: "subheader" },
+        { text: `Carrera: ${carrera}`, style: "subheader" },
         { text: `Materia: ${materias[index]}`, style: "body" },
         { text: `Horario: ${horarios[index]}`, style: "body" },
         { text: "", margin: [0, 0, 0, 10] }
