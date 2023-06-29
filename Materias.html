@@ -47,11 +47,11 @@
         <p>Podes inscribirte a las materias según tu carrera</p>
 
         <div>
-          <label>Carrera:</label>
-          <div>
-            <label><input type="radio" name="carrera" value="Tecnicatura_En_Desarrollo_Web" required>Tecnicatura en Desarrollo Web</label>
-            <label><input type="radio" name="carrera" value="Tecnicatura_En_Desarrollo_De_Apps" required>Tecnicatura en Desarrollo de Apps</label>
-          </div>
+          <label for="carrera-select">Carrera:</label>
+          <select id="carrera-select" name="carrera">
+            <option value="Tecnicatura_En_Desarrollo_Web">Tecnicatura en Desarrollo Web</option>
+            <option value="Tecnicatura_En_Desarrollo_De_Apps">Tecnicatura en Desarrollo de Apps</option>
+          </select>
         </div>
         
 
@@ -59,26 +59,31 @@
     </main>
 
     <div class="adicional">
-      <div>
-        <label for="materia">Materia:</label>
-        <div id="materia-options" disabled>
-          <label><input type="radio" name="materia" value="" disabled>Elige una carrera primero</label>
-        </div>
+      <div class="cajita-materia">
+        <label for="materia-select">Materia:</label>
+        <select id="materia-select" name="materia" disabled>
+          <option value="" selected>Elige una carrera primero</option>
+        </select>
       </div>
 
-      <div>
-        <label for="horario">Horario:</label>
-        <div id="horario-options" disabled>
-          <label><input type="radio" name="horario" value="" disabled>Elige una materia primero</label>
-        </div>
+      <div class="cajita-horario">
+        <label for="horario-select">Horario:</label>
+        <select id="horario-select" name="horario" disabled>
+          <option value="" selected>Elige una materia primero</option>
+        </select>
       </div>
+      <button id="btn-agregar-materia">Agregar Materia</button>
     </div>
 
     <div id="selecciones-container">
-      <div id="titulo-materias-seleccionadas"></div>
+      <div class="columna" id="columna-apps">
+        <div class="titulo-columna">Tecnicatura en Desarrollo de Apps</div>
+      </div>
+      <div class="columna" id="columna-web">
+        <div class="titulo-columna">Tecnicatura en Desarrollo Web</div>
+      </div>
     </div>
-      <button id="btn-agregar-materia">Agregar Materia</button>
-
+    
     <button id="btn-inscribir" disabled>Inscribirse</button>
 
   <footer class="footer">
@@ -104,7 +109,6 @@
   </footer>
   
 </div>
-
 </body>
 
 </html>

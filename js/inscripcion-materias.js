@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
-  const carreraRadios = document.getElementsByName("carrera");
-  const materiaOptions = document.getElementById("materia-options");
-  const horarioOptions = document.getElementById("horario-options");
+  const carreraSelect = document.getElementById("carrera-select");
+  const materiaSelect = document.getElementById("materia-select");
+  const horarioSelect = document.getElementById("horario-select");
   const btnAgregarMateria = document.getElementById("btn-agregar-materia");
   const btnInscribir = document.getElementById("btn-inscribir");
   const seleccionesContainer = document.getElementById("selecciones-container");
@@ -10,61 +10,60 @@ document.addEventListener("DOMContentLoaded", function() {
 
   tituloMateriasSeleccionadas.innerText = "Materias seleccionadas";
 
-  for (let i = 0; i < carreraRadios.length; i++) {
-    carreraRadios[i].addEventListener("change", function() {
-      const carreraValue = carreraRadios[i].value;
-      const materias = obtenerMateriasPorCarrera(carreraValue);
+  carreraSelect.addEventListener("change", function() {
+    const carreraValue = carreraSelect.value;
+    const materias = obtenerMateriasPorCarrera(carreraValue);
 
-      materiaOptions.innerHTML = "";
-      horarioOptions.innerHTML = "";
+    materiaSelect.innerHTML = "<option value=''>Selecciona una materia</option>";
+    horarioSelect.innerHTML = "<option value=''>Selecciona un horario</option>";
 
-      if (materias.length > 0) {
-        materias.forEach(function(materia) {
-          const materiaOption = document.createElement("label");
-          materiaOption.innerHTML = `<input type="radio" name="materia" value="${materia}" required>${materia}`;
-          materiaOptions.appendChild(materiaOption);
-        });
+    if (materias.length > 0) {
+      materias.forEach(function(materia) {
+        const materiaOption = document.createElement("option");
+        materiaOption.value = materia;
+        materiaOption.innerText = materia;
+        materiaSelect.appendChild(materiaOption);
+      });
 
-        materiaOptions.disabled = false;
-      } else {
-        const noMateriasOption = document.createElement("label");
-        noMateriasOption.innerText = "No hay materias disponibles para esta carrera";
-        materiaOptions.appendChild(noMateriasOption);
-        materiaOptions.disabled = true;
-      }
-      horarioOptions.innerHTML = "<span class='leyenda'><strong>Elige una materia primero</strong></span>";
+      materiaSelect.disabled = false;
+    } else {
+      const noMateriasOption = document.createElement("option");
+      noMateriasOption.innerText = "No hay materias disponibles para esta carrera";
+      materiaSelect.appendChild(noMateriasOption);
+      materiaSelect.disabled = true;
+    }
+    horarioSelect.disabled = true;
 
-      materiaOptions.disabled = true;
-      const selectedMateria = materiaOptions.querySelector("input[name='materia']:checked");
-      if (selectedMateria) {
-        btnInscribir.disabled = false;
-      } else {
-        btnInscribir.disabled = true;
-      }
-    });
-  }
+    const selectedMateria = materiaSelect.value;
+    if (selectedMateria) {
+      btnInscribir.disabled = false;
+    } else {
+      btnInscribir.disabled = true;
+    }
+  });
 
-  materiaOptions.addEventListener("change", function() {
-    const selectedMateria = materiaOptions.querySelector("input[name='materia']:checked");
+  materiaSelect.addEventListener("change", function() {
+    const selectedMateria = materiaSelect.value;
 
     if (selectedMateria) {
-      const horarios = obtenerHorariosPorMateria(selectedMateria.value);
+      const horarios = obtenerHorariosPorMateria(selectedMateria);
 
-      horarioOptions.innerHTML = "";
+      horarioSelect.innerHTML = "<option value=''>Selecciona un horario</option>";
 
       if (horarios.length > 0) {
         horarios.forEach(function(horario) {
-          const horarioOption = document.createElement("label");
-          horarioOption.innerHTML = `<input type="radio" name="horario" value="${horario}" required>${horario}`;
-          horarioOptions.appendChild(horarioOption);
+          const horarioOption = document.createElement("option");
+          horarioOption.value = horario;
+          horarioOption.innerText = horario;
+          horarioSelect.appendChild(horarioOption);
         });
 
-        horarioOptions.disabled = false;
+        horarioSelect.disabled = false;
       } else {
-        const noHorariosOption = document.createElement("label");
+        const noHorariosOption = document.createElement("option");
         noHorariosOption.innerText = "No hay horarios disponibles para esta materia";
-        horarioOptions.appendChild(noHorariosOption);
-        horarioOptions.disabled = true;
+        horarioSelect.appendChild(noHorariosOption);
+        horarioSelect.disabled = true;
       }
 
       btnInscribir.disabled = true;
@@ -72,14 +71,14 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 
   btnAgregarMateria.addEventListener("click", function() {
-    const selectedCarrera = document.querySelector("input[name='carrera']:checked");
-    const selectedMateria = document.querySelector("input[name='materia']:checked");
-    const selectedHorario = document.querySelector("input[name='horario']:checked");
-
+    const selectedCarrera = carreraSelect.value;
+    const selectedMateria = materiaSelect.value;
+    const selectedHorario = horarioSelect.value;
+  
     if (selectedCarrera && selectedMateria && selectedHorario) {
-      const materia = selectedMateria.value;
-      const horario = selectedHorario.value;
-
+      const materia = selectedMateria;
+      const horario = selectedHorario;
+  
       if (materiasSeleccionadas.has(materia) && horarioSeleccionado(materia, horario)) {
         alert("La materia con el mismo horario ya ha sido seleccionada.");
         return;
@@ -87,22 +86,30 @@ document.addEventListener("DOMContentLoaded", function() {
         alert("El horario ya ha sido seleccionado para otra materia.");
         return;
       }
-
-      const carrera = selectedCarrera.value.replace(/_/g, " ");
+  
+      const carrera = selectedCarrera.replace(/_/g, " ");
       const seleccion = crearSeleccion(carrera, materia, horario);
-      seleccionesContainer.appendChild(seleccion);
-
+      const columna = getCarreraColumna(selectedCarrera); // Nueva función para obtener la columna correspondiente
+      columna.appendChild(seleccion);
+  
       materiasSeleccionadas.add(materia);
-
-      selectedMateria.checked = false;
-      selectedHorario.checked = false;
-
+  
+      materiaSelect.value = "";
+      horarioSelect.value = "";
+  
       btnInscribir.disabled = false;
     }
-
-    btnAgregarMateria.style.width = "100px"; // Cambia el ancho según tus necesidades
-    btnAgregarMateria.style.height = "50px"; // Cambia la altura según tus necesidades
   });
+  
+  function getCarreraColumna(carrera) {
+    if (carrera === "Tecnicatura_En_Desarrollo_De_Apps") {
+      return document.getElementById("columna-apps");
+    } else if (carrera === "Tecnicatura_En_Desarrollo_Web") {
+      return document.getElementById("columna-web");
+    }
+    return null;
+  }
+  
 
   btnInscribir.addEventListener("click", function() {
     const selecciones = seleccionesContainer.getElementsByClassName("seleccion");
@@ -138,7 +145,7 @@ document.addEventListener("DOMContentLoaded", function() {
   function obtenerMateriasPorCarrera(carrera) {
     const materiasPorCarrera = {
       "Tecnicatura_En_Desarrollo_Web": ["Programación I", "Programación II", "Bases de Datos", "Diseño Web"],
-      "Tecnicatura_En_Desarrollo_De_Apps": ["Programación Móvil", "Diseño de Interfaces", "Desarrollo de Aplicaciones Híbridas"]
+      "Tecnicatura_En_Desarrollo_De_Apps": ["Programación Móvil", "Diseño de Interfaces", "Informatica"]
     };
 
     return materiasPorCarrera[carrera] || [];
@@ -152,7 +159,7 @@ document.addEventListener("DOMContentLoaded", function() {
       "Diseño Web": ["Martes 10:00 - 12:00", "Jueves 10:00 - 12:00"],
       "Programación Móvil": ["Viernes 8:00 - 10:00", "Sábado 10:00 - 12:00"],
       "Diseño de Interfaces": ["Viernes 10:00 - 12:00", "Sábado 8:00 - 10:00"],
-      "Desarrollo de Aplicaciones Híbridas": ["Viernes 14:00 - 16:00", "Sábado 12:00 - 14:00"]
+      "Informatica": ["Viernes 14:00 - 16:00", "Sábado 12:00 - 14:00"]
     };
 
     return horariosPorMateria[materia] || [];
@@ -190,7 +197,7 @@ document.addEventListener("DOMContentLoaded", function() {
     seleccion.setAttribute("data-carrera", carrera);
     seleccion.setAttribute("data-materia", materia);
     seleccion.setAttribute("data-horario", horario);
-
+  
     const btnEliminar = document.createElement("button");
     btnEliminar.className = "btn-eliminar";
     btnEliminar.innerHTML = "&#10060;";
@@ -199,15 +206,16 @@ document.addEventListener("DOMContentLoaded", function() {
       seleccion.remove();
       materiasSeleccionadas.delete(materia);
     });
-    
+  
     const seleccionText = document.createElement("span");
-    seleccionText.innerText = `${carrera} - ${materia} - ${horario}`;
-
-    seleccion.appendChild(btnEliminar);
+    seleccionText.innerText = `${materia} - ${horario}`;
+  
     seleccion.appendChild(seleccionText);
-
+    seleccion.appendChild(btnEliminar);
+  
     return seleccion;
   }
+  
 
   function horarioSeleccionado(materia, horario) {
     const selecciones = seleccionesContainer.getElementsByClassName("seleccion");
@@ -232,5 +240,83 @@ document.addEventListener("DOMContentLoaded", function() {
     document.querySelector('.avatar-text').classList.toggle('show');
   });
 
-
+  function actualizarMaterias() {
+    const carreraValue = carreraSelect.value;
+    const materias = obtenerMateriasPorCarrera(carreraValue);
+  
+    materiaSelect.innerHTML = "<option value=''>Selecciona una materia</option>";
+    horarioSelect.innerHTML = "<option value=''>Selecciona un horario</option>";
+  
+    if (materias.length > 0) {
+      materias.forEach(function(materia) {
+        const materiaOption = document.createElement("option");
+        materiaOption.value = materia;
+        materiaOption.innerText = materia;
+        materiaSelect.appendChild(materiaOption);
+      });
+  
+      materiaSelect.disabled = false;
+    } else {
+      const noMateriasOption = document.createElement("option");
+      noMateriasOption.innerText = "No hay materias disponibles para esta carrera";
+      materiaSelect.appendChild(noMateriasOption);
+      materiaSelect.disabled = true;
+    }
+    horarioSelect.disabled = true;
+  
+    const selectedMateria = materiaSelect.value;
+    if (selectedMateria) {
+      btnInscribir.disabled = false;
+    } else {
+      btnInscribir.disabled = true;
+    }
+  }
+  
+  carreraSelect.addEventListener("change", actualizarMaterias);
+  
+  // Llamar a la función al cargar la página
+  actualizarMaterias();
+  
+  document.addEventListener("DOMContentLoaded", function() {
+    const carreraSelect = document.getElementById("carrera-select");
+    const materiaSelect = document.getElementById("materia-select");
+    const horarioSelect = document.getElementById("horario-select");
+  
+    carreraSelect.addEventListener("mouseover", function() {
+      addHoverEffect(materiaSelect);
+      addHoverEffect(horarioSelect);
+    });
+  
+    carreraSelect.addEventListener("mouseout", function() {
+      removeHoverEffect(materiaSelect);
+      removeHoverEffect(horarioSelect);
+    });
+  
+    function addHoverEffect(selectElement) {
+      const options = selectElement.options;
+      let delay = 0;
+  
+      for (let i = 0; i < options.length; i++) {
+        const option = options[i];
+        option.addEventListener("mouseover", function() {
+          setTimeout(function() {
+            option.style.backgroundColor = "violet";
+          }, delay);
+          delay += 300;
+        });
+        option.addEventListener("mouseout", function() {
+          option.style.backgroundColor = "";
+        });
+      }
+    }
+  
+    function removeHoverEffect(selectElement) {
+      const options = selectElement.options;
+      for (let i = 0; i < options.length; i++) {
+        const option = options[i];
+        option.style.backgroundColor = "";
+      }
+    }
+  });
+  
 });

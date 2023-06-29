@@ -6,7 +6,7 @@
 
 /* Estilos generales del body */
 body {
-  background: linear-gradient(to bottom, #f1eff3 0%,#ccd8dd 100%);
+  background: linear-gradient(to bottom, #d0c3dd 0%,#8fcde7 100%);
   font-family: 'Manjari', sans-serif;
 }
 
@@ -34,7 +34,7 @@ header.header h1 a:hover {
   margin: 0.6em auto;
   display: grid;
   gap: 1.2em;
-  grid-template-columns: repeat(1, 1fr) 50%;
+  
 }
 
 /* Estilos de los contenidos principales y adicionales */
@@ -44,14 +44,8 @@ header.header h1 a:hover {
   border: 1px solid #000000;
   padding: 20px;
   display: grid;
-}
-
-/* Estilos de los artículos de matrícula y de inscripciones */
-.container > .content .article-matricula,
-.container > .adicional .article-inscripciones {
-  display: flex;
-  align-items: center;
   justify-content: center;
+  border-radius: 30px;
 }
 
 /* Estilos de los headers y footers de los contenidos principales y adicionales */
@@ -62,118 +56,106 @@ header.header h1 a:hover {
   color: white;
 }
 
-/* Estilos de los artículos de materias en curso, materias regularizadas y historial académico */
-.content .article-materia-en-curso,
-.content .article-materia-regularizada,
-.content .article-historial-academico {
-  position: relative;
-  background: #808e9b;
-  padding: 30px;
-  margin-top: 5px;
-  color: #dfe6e9;
+.content .article-inscripcion-materia p{
+  line-height: 60px;
+
 }
 
-/* Estilos de los íconos de las materias regularizadas y del historial académico */
-.content .article-materia-regularizada::after,
-.content .article-historial-academico::after {
-  content: '';
+.adicional {
+  line-height: 80px;
+}
+
+.adicional .cajita-materia{
+  margin-right: 4em;
+}
+
+.adicional .cajita-horario{
+  margin-bottom: 10px;
+}
+
+select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f7f7f7;
+  color: #333;
+  font-size: 16px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+.option-highlight {
+  background-color: violet;
+  transition: background-color 0.3s;
+}
+
+#btn-agregar-materia {
+  
+  background-color: #8d8bac;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  transition: width 0.3s, height 0.3s; /* Agrega una transición suave */
+
+}
+
+option:hover {
+  background-color: violet;
+}
+
+#btn-agregar-materia:hover {
+  background-color: #110c05;
+  color: #fff;
+}
+
+/* Estilos del contenedor de selecciones */
+#selecciones-container {
+  background-color: #f1f1f1;
+  padding: 20px;
+  border: 1px solid black;
+  border-radius: 20px;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr) 50%;
+  
+}
+
+#selecciones-container h2 {
+  text-align: center;
   position: absolute;
-  top: 0;
-  right: 2px;
-  width: 100%;
-  max-width: 85px;
-  height: 85px;
-  background-image: url(/img/materia.svg);
-  background-size: cover;
-  box-shadow: 0 0 10px rgba(14, 1, 1, 0.5);
+  right: 22em;
 }
 
-/* Estilos del ícono de la materia en curso */
-.content .article-materia-en-curso::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 2px;
-  width: 100%;
-  max-width: 85px;
-  height: 85px;
-  background-image: url(/img/matricula.svg);
-  background-size: cover;
-  box-shadow: 0 0 10px rgba(14, 1, 1, 0.5);
+
+.columna {
+  float: right;
+  width: 60%;
+  padding: 20px;
+  margin-left: 7em;
+  margin-top: 2em;
 }
 
-/* Estilos de los artículos de inscripción a materias, inscripción a finales y verificaciones */
-.adicional .article-inscripcion-materia,
-.adicional .article-inscripcion-final,
-.adicional .article-verificaciones {
-  position: relative;
-  background: #808e9b;
-  padding: 30px;
-  margin-top: 5px;
-  color: #dfe6e9;
+.titulo-columna {
+  font-weight: bold;
+  margin-bottom: 10px;
+  
 }
 
-/* Estilos de los íconos de la inscripción a finales y de las verificaciones */
-.adicional .article-inscripcion-final::after,
-.adicional .article-verificaciones::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 2px;
-  width: 100%;
-  max-width: 85px;
-  height: 85px;
-  background-size: cover;
-  background-image: url(/img/materia.svg);
-  box-shadow: 0 0 10px rgba(14, 1, 1, 0.5);
+#columna-apps{
+  text-align: center;
 }
 
-/* Estilos del ícono de la inscripción a materias */
-.adicional .article-inscripcion-materia::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 290px;
-  bottom: 0;
-  left: 0;
-  background-image: url(/img/matricula.svg);
-  background-size: cover;
-  opacity: 0.8; /* Ajusta el valor de la opacidad según tus necesidades */
-  z-index: -1; /* Asegura que la imagen esté detrás del contenido */
+#columna-web{
+  text-align: center;
 }
 
-/* Estilos comunes de los artículos de materias y de inscripciones */
-.content .article-materia-en-curso,
-.content .article-materia-regularizada,
-.content .article-historial-academico,
-.adicional .article-inscripcion-materia,
-.adicional .article-inscripcion-final,
-.adicional .article-verificaciones {
-  position: relative;
-  background: #808e9b;
-  padding: 30px;
-  margin-top: 5px;
-  color: #dfe6e9;
-  grid-column: span 1; /* Ocupa una columna */
-  cursor: pointer; /* Cambia el cursor al pasar sobre los elementos */
-  transition: background-color 0.3s ease; /* Agrega una transición suave */
+.seleccion {
+  margin-bottom: 10px;
 }
 
-/* Estilos al pasar el cursor sobre los artículos de materias y de inscripciones */
-.content .article-materia-en-curso:hover,
-.content .article-materia-regularizada:hover,
-.content .article-historial-academico:hover,
-.adicional .article-inscripcion-materia:hover,
-.adicional .article-inscripcion-final:hover,
-.adicional .article-verificaciones:hover {
-  background-color: #333; /* Cambia el color de fondo al pasar el cursor */
-}
-
-/* Estilos del título y el párrafo dentro de los artículos */
-.content .article h1,
-.content .article p {
-  padding: 5px;
-}
 
 /* Estilos del avatar */
 .avatar img {
@@ -259,49 +241,9 @@ h2 {
   color: #333;
 }
 
-/* Estilos de las etiquetas */
-label {
-  font-weight: bold;
-}
-
-/* Estilos del select y el button */
-select,
-button {
-  margin-top: 5px;
-}
-
-/* Estilos del contenedor de selección */
-#seleccion-container {
-  display: none;
-  margin-top: 20px;
-}
-
-/* Estilos del h2 dentro del contenedor de selección */
-#seleccion-container h2 {
-  margin-bottom: 10px;
-}
-
-/* Estilos de la lista dentro del contenedor de selección */
-#seleccion-list {
-  list-style-type: none;
-  padding: 0;
-}
-
-/* Estilos de los elementos de la lista dentro del contenedor de selección */
-#seleccion-list li {
-  margin-bottom: 5px;
-}
-
 /* Estilos del botón de eliminar */
 .btn-eliminar {
   cursor: pointer;
-}
-
-/* Estilos del contenedor de selecciones */
-#selecciones-container {
-  background-color: #f1f1f1;
-  padding: 10px;
-  border: 1px solid black;
 }
 
 /* Estilos del footer */
@@ -455,11 +397,6 @@ ul {
   /* Estilos del párrafo en dispositivos más pequeños */
   .content .article p {
     font-size: 1em;
-  }
-
-  /* Estilos de los related posts en dispositivos más pequeños */
-  .container .related-post {
-    grid-column: 1/-1;
   }
 
   /* Estilos del footer en dispositivos más pequeños */

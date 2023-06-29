@@ -5,7 +5,7 @@
 }
 
 body {
-  background: linear-gradient(to bottom, #f1eff3 0%,#ccd8dd 100%);
+  background: linear-gradient(to bottom, #d0c3dd 0%,#8fcde7 100%);
   font-family: 'Manjari', sans-serif;
 
 }
@@ -45,6 +45,7 @@ header.header h1 a:hover {
   display: grid;
 }
 
+
 .container> .content .article-inscripciones,
 .container> .adicional .article-matricula{
   display: flex;
@@ -59,27 +60,49 @@ header.header h1 a:hover {
   color: white;
 }
 
-.content .article-inscripcion-materia,
-.content .article-inscripcion-final,
-.content .article-verificaciones {
-  position: relative;
-  background: #808e9b;
-  padding: 30px;
-  margin-top: 5px;
-  color: #dfe6e9;
+.content .article-inscripcion-materia h1,
+.content .article-inscripcion-final h1,
+.content .article-verificaciones h1,
+.adicional .article-materia-en-curso h1,
+.adicional .article-materia-regularizada h1,
+.adicional .article-historial-academico h1 {
+  text-align: center;
+  
+}
+
+.content .article-inscripcion-materia p,
+.content .article-inscripcion-final p,
+.content .article-verificaciones p,
+.adicional .article-materia-en-curso p,
+.adicional .article-materia-regularizada p,
+.adicional .article-historial-academico p {
+  text-align: center;
 }
 
 
-.content .article-inscripcion-final::after,
 .content .article-verificaciones::after {
   content: '';
   position: absolute;
   top: 0;
-  right: 2px;
+  left: 2px;
   width: 100%;
-  max-width: 85px;
-  height: 85px;
+  max-width: 95px;
+  height: 95px;
   background-image: url(/img/materia.svg);
+  background-size: cover;
+  box-shadow: 0 0 10px rgba(14, 1, 1, 0.5);
+}
+
+
+.content .article-inscripcion-final::after{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 2px;
+  width: 100%;
+  max-width: 95px;
+  height: 95px;
+  background-image: url(/img/Libreta-materias.svg);
   background-size: cover;
   box-shadow: 0 0 10px rgba(14, 1, 1, 0.5);
 }
@@ -87,13 +110,13 @@ header.header h1 a:hover {
   content: '';
   position: absolute;
   top: 0;
-  right: 2px;
+  left: 2px;
   width: 100%;
-  max-width: 85px;
-  height: 85px;
-  background-image: url(/img/matricula.svg);
+  max-width: 95px;
+  height: 95px;
+  background-image: url(/img/Libreta-materias.svg);
   background-size: cover;
-  box-shadow: 0 0 10px rgba(14, 1, 1, 0.5);
+  box-shadow: 0 0 15px rgba(14, 1, 1, 0.5);
 }
 
 
@@ -106,18 +129,29 @@ header.header h1 a:hover {
   color: #dfe6e9;
 }
 
-
-.adicional .article-materia-regularizada::after,
-.adicional .article-historial-academico::after {
+.adicional .article-historial-academico::after{
   content: '';
   position: absolute;
   top: 0;
-  right: 2px;
+  left: 2px;
   width: 100%;
-  max-width: 85px;
-  height: 85px;
+  max-width: 95px;
+  height: 95px;
   background-size: cover;
-  background-image: url(/img/materia.svg);
+  background-image: url(/img/Historial-academico.svg);
+  box-shadow: 0 0 10px rgba(14, 1, 1, 0.5);
+}
+
+.adicional .article-materia-regularizada::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 2px;
+  width: 100%;
+  max-width: 95px;
+  height: 95px;
+  background-size: cover;
+  background-image: url(/img/Materia-regu.svg);
   box-shadow: 0 0 10px rgba(14, 1, 1, 0.5);
 }
 
@@ -125,12 +159,12 @@ header.header h1 a:hover {
   content: '';
   position: absolute;
   top: 0;
-  right: 2px;
+  left: 2px;
   width: 100%;
-  max-width: 85px;
-  height: 85px;
+  max-width: 95px;
+  height: 95px;
   background-size: cover;
-  background-image: url(/img/matricula.svg);
+  background-image: url(/img/Matricula.svg);
   box-shadow: 0 0 10px rgba(14, 1, 1, 0.5);
 }
 
@@ -178,7 +212,9 @@ header.header h1 a:hover {
     color: #619bdd;
     display: flex;
     justify-content: end;
-    margin-right: 14px;
+    margin-right: 8px;
+    margin-bottom: 20px;
+  
   }
 
   .avatar {
@@ -189,41 +225,56 @@ header.header h1 a:hover {
   }
 
 
-.avatar .editar-perfil {
-  margin-top: 5px;
-  margin-right: 8em;
-  font-weight: bold;
-  color: #000000;
-  text-decoration: none;
-  position: relative;
-}
-
-.avatar .cierre-sesion{
-  margin-top: 5px;
-  margin-left: 6em; /* Ajusta el margen izquierdo según sea necesario */
-  font-weight: bold;
-  color: #000000;
-  text-decoration: none;
+  .avatar .icono {
+    position: absolute;
+    top: 35px;
+    right: 22px;
+    width: 25px;
+    height: 25px;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  
+.avatar .cierre-sesion {
+    background-image: url(/img/Cerrar-sesion.svg);
+    background-position: center; /* Alinea la imagen en el centro */
+    right: 75px; /* Ajusta la posición horizontal según sea necesario */
+  }
+  
+.avatar .guion{
+  
+  background-image: url(/img/Guion.svg);
+  background-position: center; /* Alinea la imagen en el centro */
   position: absolute;
+  width: 10px;
+  height: 10px;
+  top: 45px;
+  right: 7em;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
-.avatar .cierre-sesion::after,
-.avatar .editar-perfil::after {
-  content: '';
-  position: absolute;
-  bottom: -2px; /* Ajusta la posición vertical del subrayado */
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background-color: transparent; /* Establece el color inicial del subrayado */
-  transition: background-color 0.3s ease; /* Agrega una transición suave */
-}
-
-.avatar .cierre-sesion:hover,
-.avatar .editar-perfil:hover{
-  cursor: pointer;
-  text-decoration: underline;
-}
+  .avatar .editar-perfil {
+    background-image: url(/img/editar-perfil.svg);
+    background-position: center; /* Alinea la imagen en el centro */
+    right: 130px; /* Ajusta la posición horizontal según sea necesario */
+  }
+  
+  .icono {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+  }
+  
+  .icono:hover::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 2px;
+    background-color: black;
+  } 
 
 .nombre-logo{
   position: absolute;
