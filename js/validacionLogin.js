@@ -27,7 +27,7 @@ function validar() {
 $('#submit').click(function(){
 
     if(validar()){
-        window.location.assign("index.html");
+        window.location.assign("home.html");
     }
     
   

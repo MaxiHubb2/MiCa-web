@@ -367,3 +367,7 @@ document.addEventListener("DOMContentLoaded", function() {
   });
   
 });
+
+function cerrarSesion() {
+  window.location.href = "index.html";
+}
