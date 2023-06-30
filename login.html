@@ -1,38 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Unflix - login</title>
-    <link rel="stylesheet" href="css/login.css" />
-  </head>
-  <body>
-    <section class="contenedor">
-      <form class="formulario">
-        <label for="Nombre de usuario">Nombre de usuario:</label>
-        <input
-          type="text"
-          id="Nombre de usuario"
-          name="Nombre de usuario"
-          placeholder="Nombre de usuario"
-          required
-        />
-        <label for="Contraseña">Contraseña:</label>
-        <input
-          type="password"
-          id="Contraseña"
-          name="Contraseña"
-          placeholder="Contraseña"
-          required
-        />
-        <input class="button" id="submit" type="button" value="Iniciar sesion"  />
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/login.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manjari&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="img/perfil.svg">
 
-        <a href="Recuperar contraseña.html">Recuperar contraseña</a>
-        <div id="mensaje" class="error"></div>
-      </form>
-    </section>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="js/validacionLogin.js"></script>
-  </body>
+  <title>Login-miCa</title>
+ 
+</head>
+<body>
+  <div class="banner">
+    <img src="/img/Logo-mica.svg" alt="Logo" class="logo" />
+    <h1 id="nombre-logo">Mica</h1>
+  </div>
+  
+  
+  
+  <section class="contenedor">
+    <form class="formulario">
+      <label for="Nombre de usuario">Nombre de usuario:</label>
+      <input type="text" id="Nombre de usuario" name="Nombre de usuario" placeholder="Nombre de usuario" required />
+      <label for="Contraseña">Contraseña:</label>
+      <input type="password" id="Contraseña" name="Contraseña" placeholder="Contraseña" required />
+      <input class="button" id="submit" type="button" value="Iniciar sesión" />
+      <a href="Recuperar contraseña.html">Recuperar contraseña</a>
+      <div id="mensaje" class="error"></div>
+    </form>
+  </section>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="js/validacionLogin.js"></script>
+</body>
 </html>

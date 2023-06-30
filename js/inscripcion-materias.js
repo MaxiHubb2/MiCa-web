@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const btnAgregarMateria = document.getElementById("btn-agregar-materia");
   const btnInscribir = document.getElementById("btn-inscribir");
   const seleccionesContainer = document.getElementById("selecciones-container");
+  
   const materiasSeleccionadas = new Set();
   const tituloMateriasSeleccionadas = document.createElement("h2");
 
@@ -117,7 +118,33 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 
- 
+  document.addEventListener("click", function(event) {
+    const target = event.target;
+    if (target.classList.contains("btn-eliminar")) {
+      const seleccion = target.parentElement;
+      const columna = seleccion.parentElement;
+      columna.removeChild(seleccion);
+  
+      const materiasEnColumna = columna.getElementsByClassName("seleccion");
+      const mensajeSinMaterias = columna.querySelector(".mensaje-sin-materias");
+  
+      if (materiasEnColumna.length === 0 && mensajeSinMaterias) {
+        mensajeSinMaterias.classList.remove("hide");
+      }
+  
+      const materia = seleccion.querySelector(".nombre-materia").innerText;
+      materiasSeleccionadas.delete(materia);
+  
+      if (materiasSeleccionadas.size === 0) {
+        btnInscribir.disabled = true;
+        document.querySelector("#selecciones-container").style.display = "none";
+      }
+    }
+  });
+    
+  
+  
+  
   function getCarreraColumna(carrera) {
     if (carrera === "Tecnicatura_En_Desarrollo_De_Apps") {
       return document.getElementById("columna-apps");
@@ -129,35 +156,36 @@ document.addEventListener("DOMContentLoaded", function() {
   
 
   btnInscribir.addEventListener("click", function() {
-    const selecciones = seleccionesContainer.getElementsByClassName("seleccion");
+  const selecciones = seleccionesContainer.getElementsByClassName("seleccion");
 
-    if (selecciones.length > 0) {
-      const seleccionesArray = Array.from(selecciones);
-      const carreras = [];
-      const materias = [];
-      const horarios = [];
+  if (selecciones.length > 0) {
+    const seleccionesArray = Array.from(selecciones);
+    const carreras = [];
+    const materias = [];
+    const horarios = [];
 
-      seleccionesArray.forEach(function(seleccion) {
-        const carrera = seleccion.getAttribute("data-carrera");
-        const materia = seleccion.getAttribute("data-materia");
-        const horario = seleccion.getAttribute("data-horario");
+    seleccionesArray.forEach(function(seleccion) {
+      const carrera = seleccion.getAttribute("data-carrera");
+      const materia = seleccion.getAttribute("data-materia");
+      const horario = seleccion.getAttribute("data-horario");
 
-        carreras.push(carrera);
-        materias.push(materia);
-        horarios.push(horario);
-      });
+      carreras.push(carrera);
+      materias.push(materia);
+      horarios.push(horario);
+    });
 
-      generarPDFInscripcion(carreras, materias, horarios);
+    generarPDFInscripcion(carreras, materias, horarios);
 
-      seleccionesContainer.innerHTML = "";
+    seleccionesContainer.innerHTML = "";
 
-      materiasSeleccionadas.clear();
+    materiasSeleccionadas.clear();
 
-      btnInscribir.disabled = true;
-    } else {
-      alert("Debes seleccionar al menos una materia antes de generar el PDF de inscripción.");
-    }
-  });
+    btnInscribir.disabled = true;
+  } else {
+    alert("Debes seleccionar al menos una materia antes de generar el PDF de inscripción.");
+  }
+});
+
 
   function obtenerMateriasPorCarrera(carrera) {
     const materiasPorCarrera = {
@@ -185,13 +213,15 @@ document.addEventListener("DOMContentLoaded", function() {
   function generarPDFInscripcion(carreras, materias, horarios) {
     const docDefinition = {
       content: [
-        { text: "Formulario de Inscripción", style: "header" },
+        { text: "Materias inscriptas", style: "header" },
       ],
       styles: {
         header: {
           fontSize: 18,
           bold: true,
-          margin: [0, 0, 0, 10]
+          margin: [0, 0, 0, 10],
+          alignment: 'center' // Agregar esta línea
+
         }
       }
     };
@@ -205,7 +235,7 @@ document.addEventListener("DOMContentLoaded", function() {
       );
     });
 
-    pdfMake.createPdf(docDefinition).download("formulario_inscripcion.pdf");
+    pdfMake.createPdf(docDefinition).download("Inscripcion exitosa!");
   }
 
   function crearSeleccion(carrera, materia, horario) {
@@ -217,7 +247,7 @@ document.addEventListener("DOMContentLoaded", function() {
   
     const btnEliminar = document.createElement("button");
     btnEliminar.className = "btn-eliminar";
-    btnEliminar.innerHTML = "<i class='fas fa-trash-alt trash-icon'></i>";
+    btnEliminar.innerHTML = "&#10060;";
     btnEliminar.style.color = "red";
     btnEliminar.addEventListener("click", function() {
       seleccion.remove();

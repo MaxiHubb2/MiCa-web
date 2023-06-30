@@ -56,7 +56,7 @@ header.header h1 a:hover {
 .container > .header,
 .container > .footer {
   grid-column: 1 / -1; /* Ocupa todas las columnas */
-  background-color: #1e272e;  
+  background-color: #172c3a;  
   color: white;
 }
 
@@ -278,7 +278,7 @@ color: inherit; /* Hereda el color del texto después de hacer clic */
 
 .footer {
     background-color: #1e272e;
-    padding: 20px;
+    padding: 7px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: auto 1fr auto; /* Nueva propiedad para definir las filas */
@@ -477,10 +477,18 @@ ul{
     .adicional> .article-materia-regularizada::after {
    
       width: 100%;
-      max-width: 40px;
-      height: 40px;
+      max-width: 100px;
+      height: 100px;
   }
-
+  .container{
+    width: 100%;
+    max-width: 1300px;
+    margin: 0.6em auto;
+    display: grid;
+    gap: 1.2em;
+    grid-template-columns: repeat(1, 1fr) 50%;
+  }
+  
   .footer-credits {
     text-align: center;
   }

@@ -10,15 +10,24 @@
   width: 25%;
   margin-top: 15%;
   margin-bottom: 1%;
-  background-color: rgba(24, 27, 75, 0.7);
+  background-color: rgb(71 201 157 / 83%);
   padding: 1.25em;
   border-radius: 10px;
 }
 
 body {
-  background-image: url(../img/fondo-porcorn.jpg);
-  font-family: sans-serif;
+
+  background-image: url(/img/Unlam.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 0;
+  padding: 0;
+  height: 70vh;
+  font-family: 'Manjari', sans-serif;
+
 }
+
 
 .button {
   width: 100%;
@@ -30,6 +39,39 @@ body {
 
 .button:hover {
   transform: scale(1.1);
+}
+
+
+.banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 1em;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 50px;
+  height: auto;
+  margin-right: 1em;
+}
+
+.contenedor form {
+  /* ... tus estilos actuales ... */
+  margin-left: auto;
+  margin-right: auto;
+  width: 25%;
+}
+
+#nombre-logo {
+  color: #fff;
+  text-decoration: none;
+  font-family: 'Manjari', sans-serif;
+  position: relative;
+  top: 5px;
 }
 
 @media (max-width: 48em) {
@@ -45,7 +87,13 @@ body {
 
 .error {
   width: 100%;
-  color: white;
+  color: rgb(231, 5, 5);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  font-weight: bold;
 }
 
 label {
