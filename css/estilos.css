@@ -277,15 +277,15 @@ color: inherit; /* Hereda el color del texto después de hacer clic */
 
 
 .footer {
-    background-color: #1e272e;
-    padding: 7px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: auto 1fr auto; /* Nueva propiedad para definir las filas */
-    gap: 5px;
-    color: white;
-  }
-  
+  background-color: #1e272e;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto 1fr auto;
+  gap: 5px;
+  color: white;
+
+}
   .footer-content {
     grid-column: 1 / -1; /* Ocupa todas las columnas */
     grid-row: 2; /* Se ubica en la segunda fila */
@@ -315,6 +315,42 @@ color: inherit; /* Hereda el color del texto después de hacer clic */
   .footer-section.contact img {
     margin-right: 5px;
 }
+
+
+   /* Estilos del footer en dispositivos más pequeños */
+   .footer {
+    grid-template-rows: auto auto auto;
+  }
+
+  /* Estilos del contenido del footer en dispositivos más pequeños */
+  .footer-content {
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-row: 2;
+    margin-top: 0;
+  }
+
+  /* Estilos de los enlaces del footer en dispositivos más pequeños */
+  .footer .footer-enlaces {
+    margin-top: 10px;
+  }
+
+  /* Estilos de la sección de contacto en el footer en dispositivos más pequeños */
+  .footer-section.contact {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Estilos de los créditos del footer en dispositivos más pequeños */
+  .footer-credits {
+    grid-row: 3;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
   
 a:visited {
     color: white; /* Cambia el color a negro después de hacer clic */

@@ -36,8 +36,128 @@
     text-align: center;
     font-size: 1.2rem;
     padding: 10px;
+    border-bottom: 1px solid #ccc;
   }
+  .materias-aprobadas tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+   
   
   .carrera-title[colspan="3"] {
     background-color: #f2f2f2;
   }
+
+  .footer-content {
+    width: 100%;
+  }
+  .separador-row {
+    border-top: 1px solid #0a0a0a;
+  }
+  
+  .footer-section.contact {
+    margin-bottom: 10px;
+  }
+  
+   /* Estilos del footer en dispositivos más pequeños */
+  .footer {
+    grid-template-rows: auto auto auto;
+  }
+
+  /* Estilos del contenido del footer en dispositivos más pequeños */
+  .footer-content {
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-row: 2;
+    margin-top: 0;
+  }
+
+  /* Estilos de los enlaces del footer en dispositivos más pequeños */
+  .footer .footer-enlaces {
+    margin-top: 10px;
+  }
+
+  /* Estilos de la sección de contacto en el footer en dispositivos más pequeños */
+  .footer-section.contact {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Estilos de los créditos del footer en dispositivos más pequeños */
+  .footer-credits {
+    grid-row: 3;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  @media screen and (max-width: 360px) and (max-height: 740px) {
+    .content> .article-inscripcion-materia::after,
+    .content> .article-inscripcion-final::after,
+    .content> .article-verificaciones::after,
+    .adicional> .article-historial-academico::after,
+    .adicional> .article-materia-en-curso::after,
+    .adicional> .article-materia-regularizada::after {
+   
+      width: 100%;
+      max-width: 40px;
+      height: 40px;
+  }
+
+  .footer-credits {
+    text-align: center;
+  }
+
+  .nombre-logo {
+    position: absolute;
+    top: 11px;
+    left: -8px;
+  }
+  .avatar-text {
+    display: none;
+  }
+  
+  .avatar-text.show {
+    display: block;
+  }
+  
+  .container {
+		text-align: center;
+	}
+  
+  .header {
+    text-align: center; /* Alinea el contenido al centro */
+  }
+
+  .header h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .header h1 img {
+    margin-right: 4px; /* Ajusta el margen derecho según sea necesario */
+  }
+
+  .mi-carrera-text {
+    display: none; /* Oculta el contenido */
+  }
+
+  header.header h1 a:hover {
+    transform: translateY(2px);
+  
+  }
+
+  .footer-content {
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-row-gap: 10px; /* Nuevo estilo */
+    margin-top: 10px;
+  }
+  
+  .footer .footer-enlaces ul {
+    margin-top: 10px;
+  }
+  
+}
