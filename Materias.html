@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="css/materias.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Manjari&display=swap" rel="stylesheet">
   <link rel="icon" type="image/x-icon" href="img/perfil.svg">
 
@@ -29,11 +30,12 @@
       </a>
       <div class="avatar-text">
         <p>Maximiliano Rabenko</p>
-        <p class="cierre-sesion">Cerrar Sesion</p>
-        <p class="editar-perfil">Editar perfil</p>
-      </div>
-      <img src="img/Big tv.jpg" alt="Avatar">
+        <span class="cierre-sesion icono"></span>
+         <span class="editar-perfil icono"></span>
     </div>
+    <img src="img/Big tv.jpg" alt="Avatar">
+    
+</div>
 
   </header>
   <div class="container">
@@ -57,7 +59,6 @@
 
       </article>
     </main>
-
     <div class="adicional">
       <div class="cajita-materia">
         <label for="materia-select">Materia:</label>
@@ -78,29 +79,35 @@
     <div id="selecciones-container">
       <div class="columna" id="columna-apps">
         <div class="titulo-columna">Tecnicatura en Desarrollo de Apps</div>
+        <div class="mensaje-sin-materias">Sin materias asignadas</div>
       </div>
       <div class="columna" id="columna-web">
         <div class="titulo-columna">Tecnicatura en Desarrollo Web</div>
+        <div class="mensaje-sin-materias">Sin materias asignadas</div>
       </div>
-    </div>
+    </div>    
     
     <button id="btn-inscribir" disabled>Inscribirse</button>
+
 
   <footer class="footer">
     <div class="footer-content">
       <div class="footer-section contact">
-        <h4>Contacto</h4>
-        <p><a href="https://goo.gl/maps/GoWR1SnMRGW3dK9X8" target="_blank"> <img src="img/GPS.svg" alt="mapa" width="20px" height="20px">Calle falsa 123, Buenos aires, Argentina </a></p>
-        <p><img src="img/telefono-blanco.svg" alt="telefono" width="20px" height="20px"> 03030 -3456 </p>
-        <p><img src="img/email-blanco.svg" alt="email" width="20px" height="20px">Mica@bestoUniversity.com</p>
+        <h3>Enlaces de ayuda</h3>
+        <ul>
+          <li><a href="#">Certificados</a></li>
+          <li><a href="#">Planes de estudio</a></li>
+          <li><a href="#">Calendario académico</a></li>
+          <li><a href="#">Tutoriales de ayuda</a></li>
+        </ul>    
       </div>
       <div class="footer-enlaces">
         <h4>Enlaces útiles</h4>
         <ul>
-          <li><a href="enlace-1" >Twitter</a></li>
-          <li><a href="enlace-2">Facebook</a></li>
-          <li><a href="enlace-3">Instagram</a></li>
+          <li><a href="https://www.unlam.edu.ar/">Sitio de la UNLaM</a></li>
+          <li><a href="https://alumno2.unlam.edu.ar/">Portal de Alumnos</a></li>
         </ul>
+    
       </div>
       <div class="footer-section copyright">
         <p class="footer-credits">© 2023 MiCa. Todos los derechos reservados.</p>

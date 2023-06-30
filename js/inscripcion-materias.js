@@ -40,7 +40,8 @@ document.addEventListener("DOMContentLoaded", function() {
     } else {
       btnInscribir.disabled = true;
     }
-  });
+
+     });
 
   materiaSelect.addEventListener("change", function() {
     const selectedMateria = materiaSelect.value;
@@ -89,18 +90,34 @@ document.addEventListener("DOMContentLoaded", function() {
   
       const carrera = selectedCarrera.replace(/_/g, " ");
       const seleccion = crearSeleccion(carrera, materia, horario);
-      const columna = getCarreraColumna(selectedCarrera); // Nueva función para obtener la columna correspondiente
-      columna.appendChild(seleccion);
   
+      const columna = getCarreraColumna(selectedCarrera);
+      const seleccionAnterior = columna.querySelector(".seleccion");
+      const mensajeSinMaterias = columna.querySelector(".mensaje-sin-materias");
+  
+      if (!seleccionAnterior) {
+        columna.querySelector(".titulo-columna").classList.remove("hide");
+  
+        if (mensajeSinMaterias) {
+          mensajeSinMaterias.classList.add("hide");
+        }
+      }
+  
+      columna.appendChild(seleccion);
       materiasSeleccionadas.add(materia);
   
       materiaSelect.value = "";
       horarioSelect.value = "";
   
       btnInscribir.disabled = false;
+  
+      document.querySelector("#selecciones-container").style.display = "grid";
+    } else {
+      alert("Debes seleccionar una carrera, materia y horario.");
     }
   });
-  
+
+ 
   function getCarreraColumna(carrera) {
     if (carrera === "Tecnicatura_En_Desarrollo_De_Apps") {
       return document.getElementById("columna-apps");
@@ -200,7 +217,7 @@ document.addEventListener("DOMContentLoaded", function() {
   
     const btnEliminar = document.createElement("button");
     btnEliminar.className = "btn-eliminar";
-    btnEliminar.innerHTML = "&#10060;";
+    btnEliminar.innerHTML = "<i class='fas fa-trash-alt trash-icon'></i>";
     btnEliminar.style.color = "red";
     btnEliminar.addEventListener("click", function() {
       seleccion.remove();

@@ -34,7 +34,7 @@ header.header h1 a:hover {
   margin: 0.6em auto;
   display: grid;
   gap: 1.2em;
-  
+
 }
 
 /* Estilos de los contenidos principales y adicionales */
@@ -52,7 +52,7 @@ header.header h1 a:hover {
 .container > .header,
 .container > .footer {
   grid-column: 1 / -1; /* Ocupa todas las columnas */
-  background-color: #1e272e;  
+  background-color: #172c3a;  
   color: white;
 }
 
@@ -84,14 +84,11 @@ select {
   cursor: pointer;
 }
 
-.option-highlight {
-  background-color: violet;
-  transition: background-color 0.3s;
-}
 
-#btn-agregar-materia {
+#btn-agregar-materia,
+#btn-inscribir {
   
-  background-color: #8d8bac;
+  background-color: #7f7fd3;
   color: #fff;
   padding: 10px 20px;
   font-size: 16px;
@@ -100,15 +97,18 @@ select {
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s;
   transition: width 0.3s, height 0.3s; /* Agrega una transición suave */
-
+  border: 1px solid black;
 }
 
-option:hover {
-  background-color: violet;
+
+#btn-inscribir:hover {
+  background-color: #59b42f;
+  color: #fff;
 }
+
 
 #btn-agregar-materia:hover {
-  background-color: #110c05;
+  background-color: #2e65ad;
   color: #fff;
 }
 
@@ -120,6 +120,7 @@ option:hover {
   border-radius: 20px;
   display: grid;
   grid-template-columns: repeat(1, 1fr) 50%;
+  display: none;
   
 }
 
@@ -156,26 +157,35 @@ option:hover {
   margin-bottom: 10px;
 }
 
+.hide {
+  display: none;
+}
+
+.trash-icon {
+  color: rgb(196, 23, 23);
+}
+
 
 /* Estilos del avatar */
 .avatar img {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  margin-right: 2px;
+  margin-right: 15px;
   margin-top: 5px;
 }
 
-/* Estilos del texto del avatar */
+
 .avatar-text p {
   font-size: 15px;
-  color: #619bdd;
+  color: #040d18;
   display: flex;
   justify-content: end;
-  margin-right: 14px;
+  margin-right: 8px;
+  margin-bottom: 20px;
+
 }
 
-/* Estilos del contenedor del avatar */
 .avatar {
   display: flex;
   align-items: center;
@@ -183,45 +193,44 @@ option:hover {
   padding: 5px 15px;
 }
 
-/* Estilos del enlace "Editar perfil" en el avatar */
-.avatar .editar-perfil {
-  margin-top: 5px;
-  margin-right: 8em;
-  font-weight: bold;
-  color: #000000;
-  text-decoration: none;
-  position: relative;
+
+.avatar .icono {
+  position: absolute;
+  top: 35px;
+  right: 22px;
+  width: 25px;
+  height: 25px;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
-/* Estilos del enlace "Cerrar sesión" en el avatar */
 .avatar .cierre-sesion {
-  margin-top: 5px;
-  margin-left: 6em; /* Ajusta el margen izquierdo según sea necesario */
-  font-weight: bold;
-  color: #000000;
-  text-decoration: none;
-  position: absolute;
+  background-image: url(/img/Cerrar-sesion.svg);
+  background-position: center; /* Alinea la imagen en el centro */
+  right: 90px; /* Ajusta la posición horizontal según sea necesario */
 }
 
-/* Estilos del subrayado al pasar el cursor sobre los enlaces del avatar */
-.avatar .cierre-sesion::after,
-.avatar .editar-perfil::after {
-  content: '';
+.avatar .editar-perfil {
+  background-image: url(/img/editar-perfil.svg);
+  background-position: center; /* Alinea la imagen en el centro */
+  right: 140px; /* Ajusta la posición horizontal según sea necesario */
+}
+
+.icono {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.icono:hover::after {
+  content: "";
   position: absolute;
-  bottom: -2px; /* Ajusta la posición vertical del subrayado */
   left: 0;
+  bottom: -2px;
   width: 100%;
   height: 2px;
-  background-color: transparent; /* Establece el color inicial del subrayado */
-  transition: background-color 0.3s ease; /* Agrega una transición suave */
-}
-
-/* Estilos al pasar el cursor sobre los enlaces del avatar */
-.avatar .cierre-sesion:hover,
-.avatar .editar-perfil:hover {
-  cursor: pointer;
-  text-decoration: underline;
-}
+  background-color: black;
+} 
 
 /* Estilos del nombre del logo */
 .nombre-logo {

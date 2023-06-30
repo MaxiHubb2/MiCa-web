@@ -202,14 +202,14 @@ header.header h1 a:hover {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    margin-right: 2px;
+    margin-right: 15px;
     margin-top: 5px;
   }
 
 
   .avatar-text p {
     font-size: 15px;
-    color: #619bdd;
+    color: #061320;
     display: flex;
     justify-content: end;
     margin-right: 8px;
@@ -238,26 +238,13 @@ header.header h1 a:hover {
 .avatar .cierre-sesion {
     background-image: url(/img/Cerrar-sesion.svg);
     background-position: center; /* Alinea la imagen en el centro */
-    right: 75px; /* Ajusta la posición horizontal según sea necesario */
+    right: 90px; /* Ajusta la posición horizontal según sea necesario */
   }
   
-.avatar .guion{
-  
-  background-image: url(/img/Guion.svg);
-  background-position: center; /* Alinea la imagen en el centro */
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  top: 45px;
-  right: 7em;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
   .avatar .editar-perfil {
     background-image: url(/img/editar-perfil.svg);
     background-position: center; /* Alinea la imagen en el centro */
-    right: 130px; /* Ajusta la posición horizontal según sea necesario */
+    right: 140px; /* Ajusta la posición horizontal según sea necesario */
   }
   
   .icono {
