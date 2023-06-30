@@ -247,7 +247,7 @@ document.addEventListener("DOMContentLoaded", function() {
   
     const btnEliminar = document.createElement("button");
     btnEliminar.className = "btn-eliminar";
-    btnEliminar.innerHTML = "&#10060;";
+    btnEliminar.innerHTML = "<i class='fas fa-trash-alt trash-icon'></i>";
     btnEliminar.style.color = "red";
     btnEliminar.addEventListener("click", function() {
       seleccion.remove();
