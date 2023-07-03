@@ -416,7 +416,7 @@ function cerrarSesion() {
 window.addEventListener('resize', function() {
   var textoInscripcion = document.querySelector('.content .article-inscripcion-materia p');
   var windowWidth = window.innerWidth;
-  if (windowWidth >= 150 && windowWidth <= 360) {
+  if (windowWidth >= 150 && windowWidth <= 460) {
     textoInscripcion.textContent = 'Carreras Inscriptx';
   } else {
     textoInscripcion.textContent = 'Podes inscribirte a las materias según tu carrera';

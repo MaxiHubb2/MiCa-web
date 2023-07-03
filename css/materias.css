@@ -487,7 +487,7 @@ ul {
     align-items: center;
   }
 
-  @media screen and (max-width: 360px){
+  @media screen and (min-width: 360px) and (max-width: 460px){
    
     .container{
       margin: auto;
@@ -542,7 +542,7 @@ ul {
      #selecciones-container h2{
       position: absolute;
       top: 5%;
-      right: 20%;
+      right: 15%;
       text-align: center;
       display: flex;
      }
@@ -659,4 +659,7 @@ ul {
     }
 
 
+
   }  
+
+
