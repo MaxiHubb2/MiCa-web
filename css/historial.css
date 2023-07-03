@@ -1,163 +1,284 @@
-.container {
-    max-width: 1300px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-
-  .materias-aprobadas {
-    background-color: #f2f2f2;
-    padding: 20px;
-    margin-bottom: 20px;
-  }
-
-  .materias-aprobadas h2 {
-    margin-top: 0;
-  }
-
-  .materias-aprobadas table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-  }
-
-  .materias-aprobadas th,
-  .materias-aprobadas td {
-    padding: 10px;
-    text-align: center;
-    border: 1px solid #ccc;
-  }
-
-  .materias-aprobadas {
-    text-align: center;
-  }
-  
-  .carrera-title {
-    font-weight: bold;
-    text-align: center;
-    font-size: 1.2rem;
-    padding: 10px;
-    border-bottom: 1px solid #ccc;
-  }
-  .materias-aprobadas tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
-  }
-   
-  
-  .carrera-title[colspan="3"] {
-    background-color: #f2f2f2;
-  }
-
-  .footer-content {
-    width: 100%;
-  }
-  .separador-row {
-    border-top: 1px solid #0a0a0a;
-  }
-  
-  .footer-section.contact {
-    margin-bottom: 10px;
-  }
-  
-   /* Estilos del footer en dispositivos más pequeños */
-  .footer {
-    grid-template-rows: auto auto auto;
-  }
-
-  /* Estilos del contenido del footer en dispositivos más pequeños */
-  .footer-content {
-    grid-template-columns: 2fr 1fr 1fr;
-    grid-row: 2;
-    margin-top: 0;
-  }
-
-  /* Estilos de los enlaces del footer en dispositivos más pequeños */
-  .footer .footer-enlaces {
-    margin-top: 10px;
-  }
-
-  /* Estilos de la sección de contacto en el footer en dispositivos más pequeños */
-  .footer-section.contact {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
-  /* Estilos de los créditos del footer en dispositivos más pequeños */
-  .footer-credits {
-    grid-row: 3;
-    margin-top: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
-  @media screen and (max-width: 360px) and (max-height: 740px) {
-    .content> .article-inscripcion-materia::after,
-    .content> .article-inscripcion-final::after,
-    .content> .article-verificaciones::after,
-    .adicional> .article-historial-academico::after,
-    .adicional> .article-materia-en-curso::after,
-    .adicional> .article-materia-regularizada::after {
-   
-      width: 100%;
-      max-width: 40px;
-      height: 40px;
-  }
-
-  .footer-credits {
-    text-align: center;
-  }
-
-  .nombre-logo {
-    position: absolute;
-    top: 11px;
-    left: -8px;
-  }
-  .avatar-text {
-    display: none;
-  }
-  
-  .avatar-text.show {
-    display: block;
-  }
-  
-  .container {
-		text-align: center;
-	}
-  
-  .header {
-    text-align: center; /* Alinea el contenido al centro */
-  }
-
-  .header h1 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .header h1 img {
-    margin-right: 4px; /* Ajusta el margen derecho según sea necesario */
-  }
-
-  .mi-carrera-text {
-    display: none; /* Oculta el contenido */
-  }
-
-  header.header h1 a:hover {
-    transform: translateY(2px);
-  
-  }
-
-  .footer-content {
-    grid-template-columns: 2fr 1fr 1fr;
-    grid-row-gap: 10px; /* Nuevo estilo */
-    margin-top: 10px;
-  }
-  
-  .footer .footer-enlaces ul {
-    margin-top: 10px;
-  }
+*{
+  margin: 0;
+  padding: 0;
   
 }
+
+body {
+background: linear-gradient(to bottom, #d0c3dd 0%,#8fcde7 100%);
+font-family: 'Manjari', sans-serif;
+
+}
+
+body header h1{
+  padding: 10px 20px;
+}
+
+/* HEADER */
+
+.title h1 {
+  text-align: center;
+  font-size: 2.9em;
+  text-transform: uppercase;
+}
+
+header h1 img:hover {
+transform: translateY(2px);
+
+}
+
+header.header {
+  background-color: #172c3a;
+  color: white;
+}
+
+
+
+header.header h1 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+
+   .materias-aprobadas {
+      background-color: #f2f2f2;
+      padding: 20px;
+      margin-bottom: 20px;
+      text-align: center;
+
+    }
+
+    .materias-aprobadas h2 {
+      margin-top: 0;
+    }
+
+    .materias-aprobadas table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+
+    .materias-aprobadas th,
+    .materias-aprobadas td {
+      padding: 10px;
+      text-align: center;
+      border: 1px solid #ccc;
+    }
+
+    .carrera-title {
+      font-weight: bold;
+      text-align: center;
+      font-size: 1.2rem;
+      padding: 10px;
+      border-bottom: 1px solid #ccc;
+    }
+    .materias-aprobadas tbody tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+    
+    
+    .carrera-title[colspan="3"] {
+      background-color: #f2f2f2;
+    }
+
+    .container > .header,
+    .container .footer{    
+        grid-column: 1 / -1;
+        background-color: #172c3a;
+        color: white;
+    }
+
+    .footer-content {
+      width: 100%;
+    }
+    .separador-row {
+      border-top: 1px solid #0a0a0a;
+    }
+    
+    /* Estilos del footer en dispositivos más pequeños */
+    .footer {
+      background-color: #172c3a;
+      padding: 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: auto 1fr auto;
+      gap: 5px;
+      color: white;
+    }
+
+    /* Estilos del contenido del footer en dispositivos más pequeños */
+    .footer-content {
+      grid-template-columns: 2fr 1fr 1fr;
+      grid-row: 2;
+      margin-top: 0;
+    }
+
+      /* Estilos de la sección de contacto en el footer en dispositivos más pequeños */
+    .footer-section.contact {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 10px;
+
+    }
+
+    /* Estilos de los créditos del footer en dispositivos más pequeños */
+    .footer-credits {
+      grid-row: 3;
+      margin-top: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+/* MEDIA QUERIES */
+
+@media screen and (max-width: 768px) {
+  
+  .container{
+    margin: 0;
+  }
+  
+  .header {
+      text-align: start;
+      
+  }
+  .container .content,
+  .container .adicional {
+    grid-column: 1/-1;
+  }
+  
+  .content .article-inscripciones::after {
+      max-width: 60px; /* Ajusta el tamaño de la imagen */
+      height: 60px; /* Ajusta el tamaño de la imagen */
+  }
+
+  .content .article h1 {
+      font-size: 1.5em; /* Ajusta el tamaño de la letra */
+  }
+
+  .content .article p {
+      font-size: 1em; /* Ajusta el tamaño de la letra */
+  }
+      
+  .footer {
+        grid-template-rows: auto auto auto; /* Restaura el número de filas del grid */
+         /* Ajusta el margen superior del footer */
+      }
+    
+      .footer-content {
+        grid-template-columns: 1fr; /* Cambia a una sola columna en dispositivos más pequeños */
+        grid-row: 2; /* Ubica el footer-content en la segunda fila */
+        margin-top: 0; /* Elimina el margen superior excesivo */
+      }
+      
+      .footer .footer-enlaces{
+          margin-top: 10px;
+
+      }
+
+      .footer-section.contact {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center; /* Centra verticalmente el contenido */
+        }
+        
+      
+      .footer-credits {
+        grid-row: 3; /* Ubica el footer-credits en la tercera fila */
+        margin-top: 10px; /* Elimina el margen superior excesivo */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center; /* Centra verticalmente el contenido */
+      }
+
+      @media screen and (min-width: 360px) and (max-width: 740px) {
+
+        .avatar-text {
+          display: none;
+        }
+        
+        .avatar-text.show {
+          display: block;
+        }
+        .avatar img{
+          margin: 5px 0px;
+        
+        }
+        
+        .header {
+          text-align: center; /* Alinea el contenido al centro */
+        }
+      
+         
+        .header h1 img {
+          margin-right: 4px; /* Ajusta el margen derecho según sea necesario */
+        }
+      
+        .mi-carrera-text {
+          display: none; /* Oculta el contenido */
+        }
+      
+        header.header h1 a:hover {
+          transform: translateY(2px);
+        
+        }
+          
+        .container{
+          display: grid;
+          margin: 0;
+        }
+
+        .header {
+          text-align: center;
+        }
+      
+        .container .content,
+        .container .adicional {
+          grid-column: 1/-1;
+        }
+      
+        .materias-aprobadas table {
+          font-size: 0.8em;
+        }
+      
+        .carrera-title {
+          font-size: 1em;
+        }
+      
+        .footer {
+          grid-template-columns: 1fr; /* Cambia a una sola columna en dispositivos más pequeños */
+          grid-template-rows: auto auto auto; /* Restaura el número de filas del grid */
+          margin-top: 20px; /* Ajusta el margen superior del footer */
+        }
+      
+        .footer-content {
+          grid-template-columns: 1fr; /* Cambia a una sola columna en dispositivos más pequeños */
+          grid-row: 2; /* Ubica el footer-content en la segunda fila */
+          margin-top: 0; /* Elimina el margen superior excesivo */
+        }
+      
+        .footer-section.contact {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center; /* Centra verticalmente el contenido */
+          margin-bottom: 10px; /* Agrega un margen inferior */
+        }
+      
+        .footer-credits {
+          grid-row: 3; /* Ubica el footer-credits en la tercera fila */
+          margin-top: 10px; /* Elimina el margen superior excesivo */
+        }
+      }
+      
+    }
+    
+  
+
+
+    

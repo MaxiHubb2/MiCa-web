@@ -329,11 +329,7 @@ color: inherit; /* Hereda el color del texto después de hacer clic */
     margin-top: 0;
   }
 
-  /* Estilos de los enlaces del footer en dispositivos más pequeños */
-  .footer .footer-enlaces {
-    margin-top: 10px;
-  }
-
+ 
   /* Estilos de la sección de contacto en el footer en dispositivos más pequeños */
   .footer-section.contact {
     display: flex;
@@ -448,6 +444,11 @@ ul{
 /* MEDIA QUERIES */
 
 @media screen and (max-width: 768px) {
+    
+  .container{
+    margin: 0;
+  }
+  
     .header {
         text-align: start;
         
@@ -455,6 +456,7 @@ ul{
     .container .content,
     .container .adicional {
       grid-column: 1/-1;
+      
     }
     
     .content .article-inscripciones::after {
@@ -505,31 +507,118 @@ ul{
       }
       
     @media screen and (max-width: 360px) and (max-height: 740px) {
-    .content> .article-inscripcion-materia::after,
-    .content> .article-inscripcion-final::after,
-    .content> .article-verificaciones::after,
-    .adicional> .article-historial-academico::after,
-    .adicional> .article-materia-en-curso::after,
-    .adicional> .article-materia-regularizada::after {
-   
-      width: 100%;
-      max-width: 100px;
-      height: 100px;
-  }
-  .container{
-    width: 100%;
-    max-width: 1300px;
-    margin: 0.6em auto;
-    display: grid;
-    gap: 1.2em;
-    grid-template-columns: repeat(1, 1fr) 50%;
-  }
-  
-  .footer-credits {
-    text-align: center;
-  }
 
-  .nombre-logo {
+
+      .adicional .article-historial-academico::after{
+        content: '';
+        position: absolute;
+        top: 18%;
+        left: 6%;
+        width: 100%;
+        max-width: 35%;
+        height: 69%;
+        background-size: contain; /* Ajusta el tamaño de la imagen sin deformarla */
+        background-repeat: no-repeat;
+        background-image: url(/img/Historial-academico.svg);
+        box-shadow: 0 0 10px rgba(14, 1, 1, 0.5);
+      }
+      
+      .adicional .article-materia-regularizada::after {
+        content: '';
+        position: absolute;
+        top: 18%;
+        left: 6%;
+        width: 100%;
+        max-width: 35%;
+        height: 69%;
+        background-size: contain; /* Ajusta el tamaño de la imagen sin deformarla */
+        background-repeat: no-repeat;
+        background-image: url(/img/Materia-regu.svg);
+        box-shadow: 0 0 10px rgba(14, 1, 1, 0.5);
+      }
+      
+      .adicional .article-materia-en-curso::after{
+        content: '';
+        position: absolute;
+        top: 18%;
+        left: 6%;
+        width: 100%;
+        max-width: 35%;
+        height: 69%;
+        background-size: contain; /* Ajusta el tamaño de la imagen sin deformarla */
+        background-repeat: no-repeat;
+        background-image: url(/img/Matricula.svg);
+        box-shadow: 0 0 10px rgba(14, 1, 1, 0.5);
+      }
+  
+    .content .article-verificaciones:after {
+        content: '';
+        position: absolute;
+        top: 7%;
+        left: 6%;
+        width: 100%;
+        max-width: 35%;
+        height: 79%;
+        background-image: url(/img/materia.svg);
+        background-size: contain; /* Ajusta el tamaño de la imagen sin deformarla */
+        background-repeat: no-repeat;  
+        box-shadow: 0 0 10px rgba(14, 1, 1, 0.5);
+      }
+      
+      .content .article-inscripcion-materia::after {
+        content: '';
+        position: absolute;
+        top: 18%;
+        left: 6%;
+        width: 100%;
+        max-width: 35%;
+        height: 69%;
+        background-image: url(/img/Libreta-materias.svg);
+        background-size: contain; /* Ajusta el tamaño de la imagen sin deformarla */
+        background-repeat: no-repeat;  
+        box-shadow: 0 0 10px rgba(14, 1, 1, 0.5);
+      }
+      
+      .content .article-inscripcion-final::after {
+        content: '';
+        position: absolute;
+        top: 18%;
+        left: 6%;
+        width: 100%;
+        max-width: 35%;
+        height: 69%;
+        background-image: url(/img/Libreta-materias.svg);
+        background-size: contain; /* Ajusta el tamaño de la imagen sin deformarla */
+        background-repeat: no-repeat;  
+        box-shadow: 0 0 10px rgba(14, 1, 1, 0.5);
+      }
+
+    .content .article-verificaciones,
+    .content .article-inscripcion-materia, 
+    .content .article-inscripcion-final,
+    .adicional .article-historial-academico,
+    .adicional .article-materia-regularizada,
+    .adicional .article-materia-en-curso{
+        position: relative;
+      }
+    
+    .content .article-verificaciones p,
+    .content .article-verificaciones h1,
+    .content .article-inscripcion-materia p,
+    .content .article-inscripcion-materia h1,
+    .content .article-inscripcion-final p,
+    .content .article-inscripcion-final h1,
+    .adicional .article-historial-academico p,
+    .adicional .article-historial-academico h1,
+    .adicional .article-materia-regularizada p,
+    .adicional .article-materia-regularizada h1,
+    .adicional .article-materia-en-curso p,
+    .adicional .article-materia-en-curso h1{
+        position: relative;
+        margin-left: 110px; /* Ajusta el margen izquierdo según el ancho de la imagen */
+     }
+
+   .nombre-logo {
     position: absolute;
     top: 11px;
     left: -8px;
@@ -541,10 +630,11 @@ ul{
   .avatar-text.show {
     display: block;
   }
+
+  .avatar img{
+    margin: 5px 0px;
   
-  .container {
-		text-align: center;
-	}
+  }
   
   .header {
     text-align: center; /* Alinea el contenido al centro */
@@ -568,6 +658,41 @@ ul{
     transform: translateY(2px);
   
   }
+
+  .footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+
+  .footer-section.contact ul,
+  .footer-enlaces ul{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+  }
+  
+  .footer li a::after {
+    content: none;
+  }
+  
+  p.footer-credits {
+    text-align: center;
+  }
+
+  .footer-content {
+    grid-template-columns: 1fr; /* Cambia a una sola columna en dispositivos más pequeños */
+    grid-row: 2; /* Ubica el footer-content en la segunda fila */
+    margin-top: 0; /* Elimina el margen superior excesivo */
+    text-align: center; /* Centra los enlaces uno debajo del otro */
+  }
+  
+  
 }
+
+
+
 
       

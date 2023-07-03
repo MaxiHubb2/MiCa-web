@@ -1,21 +1,21 @@
-/* Reset de estilos para todos los elementos */
-* {
+*{
   margin: 0;
   padding: 0;
+  
 }
 
-/* Estilos generales del body */
 body {
-  background: linear-gradient(to bottom, #d0c3dd 0%,#8fcde7 100%);
-  font-family: 'Manjari', sans-serif;
+background: linear-gradient(to bottom, #d0c3dd 0%,#8fcde7 100%);
+font-family: 'Manjari', sans-serif;
+
 }
 
-/* Estilos del título en el header */
-body header h1 {
+body header h1{
   padding: 10px 20px;
 }
 
-/* Estilos del título principal */
+/* HEADER */
+
 .title h1 {
   text-align: center;
   font-size: 2.9em;
@@ -153,14 +153,13 @@ select {
   text-align: center;
 }
 
-.seleccion {
-  margin-bottom: 10px;
-}
 
 .hide {
   display: none;
 }
-
+.cajita-horario.oculto {
+  display: none;
+}
 .trash-icon {
   color: rgb(196, 23, 23);
 }
@@ -257,7 +256,7 @@ h2 {
 
 /* Estilos del footer */
 .footer {
-  background-color: #1e272e;
+  background-color: #172c3a;
   padding: 20px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -286,9 +285,11 @@ h2 {
 .footer-section.contact {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-}
+  margin-bottom: 10px;
 
+}
 /* Estilos del título h4 en la sección de contacto del footer */
 .footer-section.contact h4 {
   margin-bottom: 10px;
@@ -303,12 +304,6 @@ h2 {
 a:visited {
   color: white;
   text-decoration: none;
-}
-
-/* Estilos del título h1 en el header */
-.header h1 {
-  display: inline-flex;
-  align-items: center;
 }
 
 /* Estilos de la imagen en el header */
@@ -377,10 +372,12 @@ ul {
   padding-bottom: 2px;
 }
 
-/* Media Queries */
-
 @media screen and (max-width: 768px) {
   /* Estilos del header en dispositivos más pequeños */
+  
+  .container{
+    display: grid;
+  }
   .header {
     text-align: start;
   }
@@ -425,11 +422,6 @@ ul {
     margin-top: 0;
   }
 
-  /* Estilos de los enlaces del footer en dispositivos más pequeños */
-  .footer .footer-enlaces {
-    margin-top: 10px;
-  }
-
   /* Estilos de la sección de contacto en el footer en dispositivos más pequeños */
   .footer-section.contact {
     display: flex;
@@ -448,61 +440,159 @@ ul {
     align-items: center;
   }
 
-  @media screen and (max-width: 360px) and (max-height: 740px) {
-    .content> .article-inscripcion-materia::after,
-    .content> .article-inscripcion-final::after,
-    .content> .article-verificaciones::after,
-    .adicional> .article-historial-academico::after,
-    .adicional> .article-materia-en-curso::after,
-    .adicional> .article-materia-regularizada::after {
+  @media screen and (max-width: 360px) and (max-width: 740px){
    
-      width: 100%;
-      max-width: 40px;
-      height: 40px;
+    .container{
+      margin: auto;
+      display: grid;
+    }
+    
+    .adicional{
+      line-height: 0;
+    }
+
+    .adicional .cajita-materia {
+      margin:2em;
+  }
+    .content .article-inscripcion-materia h1{
+
+      text-align: center;
+    }
+      
+    .content .article-inscripcion-materia p{
+      line-height: 2em;
+      text-align: center;
   }
 
-  .footer-credits {
-    text-align: center;
+    .content .article-inscripcion-materia label {
+      display: none;
+    }
+  }
+  
+
+  .adicional label{
+    display: grid;
+    justify-content: center;
+    margin: 2em 0 2em;
+  }
+      
+  .adicional .cajita-materia{
+    margin: 0;
+
   }
 
-  .nombre-logo {
-    position: absolute;
-    top: 11px;
-    left: -8px;
-  }
-  .avatar-text {
-    display: none;
-  }
-  
-  .avatar-text.show {
-    display: block;
-  }
-  
-  .container {
-		text-align: center;
-	}
-  
-  .header {
-    text-align: center; /* Alinea el contenido al centro */
+      .cajita-materia,
+      .cajita-horario{
+      display: grid;
+      justify-content: center;
+      }
+      
+     #selecciones-container h2{
+      position: absolute;
+      right: 10%;
+     }
+      
+      #btn-agregar-materia{
+      margin-top: 3em
+      }
+
+    .container .content,
+    .container .adicional{
+      margin: auto;
+      width: 80%;
+    }
+    
+  #selecciones-container{
+    margin: auto;
+    width: 80%;
+    grid-template-columns: repeat(1, 1fr);
   }
 
-  .header h1 {
+
+  #btn-inscribir{
+
+    margin: auto;
+    width: 90%;
+  }
+  .columna {
+    float: left;
+    width: 60%;
+    padding: 20px;
+    margin-left: 10%;
+}
+
+  .header h1{ 
     display: flex;
     justify-content: center;
     align-items: center;
   }
-
-  .header h1 img {
-    margin-right: 4px; /* Ajusta el margen derecho según sea necesario */
-  }
-
-  .mi-carrera-text {
-    display: none; /* Oculta el contenido */
-  }
-
-  header.header h1 a:hover {
-    transform: translateY(2px);
   
-  }
-}
-}
+    
+    .nombre-logo {
+      position: absolute;
+      top: 11px;
+      left: -8px;
+    }
+    .avatar-text {
+      display: none;
+    }
+    
+    .avatar-text.show {
+      display: block;
+    }
+  
+    .avatar img{
+      margin: 5px 0px;
+    
+    }
+    
+    .header {
+      text-align: center; /* Alinea el contenido al centro */
+    }
+  
+     
+    .header h1 img {
+      margin-right: 4px; /* Ajusta el margen derecho según sea necesario */
+    }
+  
+    .mi-carrera-text {
+      display: none; /* Oculta el contenido */
+    }
+  
+    header.header h1 a:hover {
+      transform: translateY(2px);
+    
+    }
+  
+    .footer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+  
+    .footer-section.contact ul,
+    .footer-enlaces ul{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+    }
+    
+    .footer li a::after {
+      content: none;
+    }
+    
+    p.footer-credits {
+      text-align: center;
+    }
+  
+    .footer-content {
+      grid-template-columns: 1fr; /* Cambia a una sola columna en dispositivos más pequeños */
+      grid-row: 2; /* Ubica el footer-content en la segunda fila */
+      margin-top: 0; /* Elimina el margen superior excesivo */
+      text-align: center; /* Centra los enlaces uno debajo del otro */
+    }
+
+
+  }  

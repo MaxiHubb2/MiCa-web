@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/materias.css">
   <link rel="stylesheet" href="css/historial.css">
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
@@ -23,9 +22,7 @@
 </head>
 
 <body>
-
   <header>
-
     <div class="avatar">
       <a href="home.html" class="nombre-logo">
         <h1>MiCa</h1>
@@ -35,11 +32,10 @@
         <span class="cierre-sesion icono" onclick="cerrarSesion()"></span>
         <span class="editar-perfil icono"></span>
       </div>
-    <img src="img/Big tv.jpg" alt="Avatar">
-    
-</div>
-
+      <img src="img/Big tv.jpg" alt="Avatar">
+    </div>
   </header>
+
   <div class="container">
     <header class="header">
       <h1><a href="home.html"><img src="img/Home.svg" alt="casa" width="30px" height="30px"></a><span class="mi-carrera-text">Mi Carrera</span></h1>
@@ -57,20 +53,19 @@
             <option value="Tecnicatura_En_Desarrollo_De_Apps">Tecnicatura en Desarrollo de Apps</option>
           </select>
         </div>
-        
-
       </article>
     </main>
+
     <div class="adicional">
       <div class="cajita-materia">
-        <label for="materia-select">Materia:</label>
+        <label for="materia-select">Materias:</label>
         <select id="materia-select" name="materia" disabled>
           <option value="" selected>Elige una carrera primero</option>
         </select>
       </div>
 
-      <div class="cajita-horario">
-        <label for="horario-select">Horario:</label>
+      <div class="cajita-horario oculto">
+        <label for="horario-select">Horarios:</label>
         <select id="horario-select" name="horario" disabled>
           <option value="" selected>Elige una materia primero</option>
         </select>
@@ -87,10 +82,10 @@
         <div class="titulo-columna">Tecnicatura en Desarrollo Web</div>
         <div class="mensaje-sin-materias">Sin materias asignadas</div>
       </div>
-    </div>    
-    
-    <button id="btn-inscribir" disabled>Inscribirse</button>
+    </div>
 
+    <button id="btn-inscribir" disabled>Inscribirse</button>
+  </div>
 
   <footer class="footer">
     <div class="footer-content">
@@ -101,7 +96,7 @@
           <li><a href="#">Planes de estudio</a></li>
           <li><a href="#">Calendario académico</a></li>
           <li><a href="#">Tutoriales de ayuda</a></li>
-        </ul>    
+        </ul>
       </div>
       <div class="footer-enlaces">
         <h3>Enlaces útiles</h3>
@@ -109,15 +104,13 @@
           <li><a href="https://www.unlam.edu.ar/">Sitio de la UNLaM</a></li>
           <li><a href="https://alumno2.unlam.edu.ar/">Portal de Alumnos</a></li>
         </ul>
-    
       </div>
       <div class="footer-section copyright">
         <p class="footer-credits">© 2023 MiCa. Todos los derechos reservados.</p>
       </div>
     </div>
   </footer>
-  
-</div>
-</body>
 
-</html>
+
+  </body>
+  </html>

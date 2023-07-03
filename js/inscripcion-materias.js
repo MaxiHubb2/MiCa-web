@@ -60,17 +60,35 @@ document.addEventListener("DOMContentLoaded", function() {
           horarioSelect.appendChild(horarioOption);
         });
 
+        // Habilitamos la caja de horarios
         horarioSelect.disabled = false;
+
+        // Mostramos la caja de horarios
+        const cajaHorario = document.querySelector(".cajita-horario");
+        cajaHorario.classList.remove("oculto");
       } else {
         const noHorariosOption = document.createElement("option");
         noHorariosOption.innerText = "No hay horarios disponibles para esta materia";
         horarioSelect.appendChild(noHorariosOption);
+
+        // Deshabilitamos la caja de horarios
         horarioSelect.disabled = true;
+
+        // Ocultamos la caja de horarios
+        const cajaHorario = document.querySelector(".cajita-horario");
+        cajaHorario.classList.add("oculto");
       }
+    } else {
+      // Si no hay materia seleccionada, deshabilitamos y ocultamos la caja de horarios
+      horarioSelect.innerHTML = "<option value='' selected>Elige una materia primero</option>";
+      horarioSelect.disabled = true;
+      const cajaHorario = document.querySelector(".cajita-horario");
+      cajaHorario.classList.add("oculto");
+    }
 
       btnInscribir.disabled = true;
     }
-  });
+  );
 
   btnAgregarMateria.addEventListener("click", function() {
     const selectedCarrera = carreraSelect.value;
@@ -181,6 +199,9 @@ document.addEventListener("DOMContentLoaded", function() {
     materiasSeleccionadas.clear();
 
     btnInscribir.disabled = true;
+
+    document.querySelector("#selecciones-container").style.display = "none";
+
   } else {
     alert("Debes seleccionar al menos una materia antes de generar el PDF de inscripción.");
   }
@@ -213,30 +234,52 @@ document.addEventListener("DOMContentLoaded", function() {
   function generarPDFInscripcion(carreras, materias, horarios) {
     const docDefinition = {
       content: [
-        { text: "Materias inscriptas", style: "header" },
+        { text: "Materias inscriptas", style: "header" }
       ],
       styles: {
         header: {
           fontSize: 18,
           bold: true,
           margin: [0, 0, 0, 10],
-          alignment: 'center' // Agregar esta línea
-
+          alignment: 'center'
+        },
+        subheader: {
+          fontSize: 14,
+          bold: true,
+          margin: [0, 10, 0, 5]
+        },
+        leyenda: {
+          fontSize: 12,
+          margin: [0, 10, 0, 10],
+          alignment: 'center'
+        },
+        body: {
+          fontSize: 14,
+          margin: [0, 0, 0, 10]
         }
       }
     };
-
+    const leyenda = {
+      text: "Maximiliano Rabenko te has inscripto a estas materias. Te pedimos aguardar a la fecha de la verificación de materias para conocer el aula asignada.\n\nGuarda este pdf como comprobante de inscripción!",
+      style: "leyenda",
+      margin: [0, 20, 0, 10]
+    };
+  
+    const materiasSeleccionadas = [];
+  
     carreras.forEach(function(carrera, index) {
-      docDefinition.content.push(
+      materiasSeleccionadas.push(
         { text: `Carrera: ${carrera}`, style: "subheader" },
         { text: `Materia: ${materias[index]}`, style: "body" },
-        { text: `Horario: ${horarios[index]}`, style: "body" },
-        { text: "", margin: [0, 0, 0, 10] }
+        { text: `Horario: ${horarios[index]}`, style: "body" }
       );
     });
-
+  
+    docDefinition.content.push(...materiasSeleccionadas, leyenda);
+  
     pdfMake.createPdf(docDefinition).download("Inscripcion exitosa!");
   }
+  
 
   function crearSeleccion(carrera, materia, horario) {
     const seleccion = document.createElement("div");
@@ -371,3 +414,13 @@ document.addEventListener("DOMContentLoaded", function() {
 function cerrarSesion() {
   window.location.href = "index.html";
 }
+
+window.addEventListener('resize', function() {
+  var textoInscripcion = document.querySelector('.content .article-inscripcion-materia p');
+  var windowWidth = window.innerWidth;
+  if (windowWidth >= 150 && windowWidth <= 360) {
+    textoInscripcion.textContent = 'Carreras Inscriptx';
+  } else {
+    textoInscripcion.textContent = 'Podes inscribirte a las materias según tu carrera';
+  }
+});
