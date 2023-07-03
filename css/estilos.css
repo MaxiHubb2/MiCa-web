@@ -692,7 +692,7 @@ ul{
   
 }
 
-@media screen and (max-width: 600px){
+@media screen and (min-width: 560px) and (max-width: 600px){
   .adicional .article-historial-academico::after{
     content: '';
     position: absolute;
