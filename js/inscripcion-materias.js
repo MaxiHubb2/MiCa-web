@@ -111,6 +111,7 @@ document.addEventListener("DOMContentLoaded", function() {
       const seleccion = crearSeleccion(carrera, materia, horario);
   
       const columna = getCarreraColumna(selectedCarrera);
+      console.log('selectedCarrera:', selectedCarrera) 
       const seleccionAnterior = columna.querySelector(".seleccion");
       const mensajeSinMaterias = columna.querySelector(".mensaje-sin-materias");
   
@@ -135,6 +136,15 @@ document.addEventListener("DOMContentLoaded", function() {
       alert("Debes seleccionar una carrera, materia y horario.");
     }
   });
+
+  function getCarreraColumna(carrera) {
+    if (carrera === "Tecnicatura_En_Desarrollo_De_Apps") {
+      return document.getElementById("columna-apps");
+    } else if (carrera === "Tecnicatura_En_Desarrollo_Web") {
+      return document.getElementById("columna-web");
+    }
+    return null;
+  }
 
   document.addEventListener("click", function(event) {
     const target = event.target;
@@ -161,18 +171,6 @@ document.addEventListener("DOMContentLoaded", function() {
   });
     
   
-  
-  
-  function getCarreraColumna(carrera) {
-    if (carrera === "Tecnicatura_En_Desarrollo_De_Apps") {
-      return document.getElementById("columna-apps");
-    } else if (carrera === "Tecnicatura_En_Desarrollo_Web") {
-      return document.getElementById("columna-web");
-    }
-    return null;
-  }
-  
-
   btnInscribir.addEventListener("click", function() {
   const selecciones = seleccionesContainer.getElementsByClassName("seleccion");
 
