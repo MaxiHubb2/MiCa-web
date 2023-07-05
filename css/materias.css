@@ -5,8 +5,9 @@
 }
 
 body {
-background: linear-gradient(to bottom, #d0c3dd 0%,#8fcde7 100%);
+background: linear-gradient(to left, #d0c3dd 0%,#8fcde7 100%);
 font-family: 'Manjari', sans-serif;
+  background-size: 100% 100%; /* Ajustar el tamaño del fondo al 100% tanto en ancho como en altura */
 
 }
 
@@ -34,7 +35,6 @@ header.header h1 a:hover {
   margin: 0.6em auto;
   display: grid;
   gap: 1.2em;
-
 }
 
 /* Estilos de los contenidos principales y adicionales */
@@ -46,6 +46,7 @@ header.header h1 a:hover {
   display: grid;
   justify-content: center;
   border-radius: 30px;
+  
 }
 
   .container .content,
@@ -59,11 +60,7 @@ header.header h1 a:hover {
       width: 20%;
     }
 
-    #selecciones-container{
-      margin: auto;
-      width: 80%;
-    }
-
+ 
 /* Estilos de los headers y footers de los contenidos principales y adicionales */
 .container > .header,
 .container > .footer {
@@ -154,17 +151,22 @@ select {
   border: 1px solid black;
   border-radius: 20px;
   display: grid;
-  grid-template-columns: repeat(1, 1fr) 50%;
+  grid-template-columns: repeat(2, 1fr);
   display: none;
-  
+  margin: auto;
+  width: 80%;
 }
+
 
 #selecciones-container h2 {
   text-align: center;
+  margin-top: 0; /* Elimina el espacio superior */
   position: absolute;
-  right: 22em;
+  top: 50%;
+  transform: translateX(16em) translateY(13em);
+  display: grid;
+  justify-content: center;
 }
-
 
 .columna {
   float: right;
@@ -180,17 +182,18 @@ select {
   
 }
 
-#columna-apps{
+#columna-apps {
   text-align: center;
   line-height: 2em;
   position: relative;
   right: 5em;
 }
 
-#columna-web{
-  text-align: center;
+
+#columna-web {
   line-height: 2em;
 }
+
 
 
 .hide {
@@ -243,13 +246,13 @@ select {
 }
 
 .avatar .cierre-sesion {
-  background-image: url(/img/Cerrar-sesion.svg);
+  background-image: url(../img/Cerrar-sesion.svg);
   background-position: center; /* Alinea la imagen en el centro */
   right: 90px; /* Ajusta la posición horizontal según sea necesario */
 }
 
 .avatar .editar-perfil {
-  background-image: url(/img/editar-perfil.svg);
+  background-image: url(../img/editar-perfil.svg);
   background-position: center; /* Alinea la imagen en el centro */
   right: 140px; /* Ajusta la posición horizontal según sea necesario */
 }
@@ -450,43 +453,76 @@ ul {
     right: 0em;
     
   }
-  
 
-  .footer {
-    background-color: #1e272e;
+  .columna {
+    /* float: right; */
+    width: 70%;
     padding: 20px;
+    margin-right: 35%;
+    margin-top: 2em;
+    margin-left: 12%;
+    text-align: center;
+}
+  #selecciones-container {
+    background-color: #f1f1f1;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 20px;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: auto 1fr auto;
-    gap: 5px;
-    color: white;
-  }
+    grid-template-columns: repeat(1, 1fr);
+    display: none;
+    margin: auto;
+    width: 80%;
+}
+#selecciones-container h2 {
+  text-align: center;
+  margin-top: 0;
+  position: absolute;
+  top: 50%;
+  transform: translateX(5em) translateY(13em);
+  display: grid;
+  justify-content: center;
+  margin-top: 2%;
+}
+
+
+#btn-inscribir {
+  margin: 22px 44px;
+  width: 85%;
+}
+
   
-  /* Estilos del contenido del footer en dispositivos más pequeños */
-  .footer-content {
-    grid-template-columns: 2fr 1fr 1fr;
-    grid-row: 2;
-    margin-top: 0;
-  }
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-  /* Estilos de la sección de contacto en el footer en dispositivos más pequeños */
-  .footer-section.contact {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
 
-  /* Estilos de los créditos del footer en dispositivos más pequeños */
-  .footer-credits {
-    grid-row: 3;
-    margin-top: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
+.footer-section.contact ul,
+.footer-enlaces ul{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+}
 
+.footer li a::after {
+  content: none;
+}
+
+p.footer-credits {
+  text-align: center;
+}
+
+.footer-content {
+  grid-template-columns: 1fr; /* Cambia a una sola columna en dispositivos más pequeños */
+  grid-row: 2; /* Ubica el footer-content en la segunda fila */
+  margin-top: 0; /* Elimina el margen superior excesivo */
+  text-align: center; /* Centra los enlaces uno debajo del otro */
+}
+
+}
   @media screen and (min-width: 360px) and (max-width: 460px){
    
     .container{
@@ -514,9 +550,7 @@ ul {
     .content .article-inscripcion-materia label {
       display: none;
     }
-  }
   
-
   .adicional label{
     display: grid;
     justify-content: center;
@@ -534,17 +568,16 @@ ul {
       justify-content: center;
       }
       
-      #selecciones-container{
-        position: relative;
-      }
-
+      
 
      #selecciones-container h2{
-      position: absolute;
-      top: 5%;
-      right: 15%;
       text-align: center;
-      display: flex;
+      margin-top: 0;
+      position: absolute;
+      top: 50%;
+      transform: translateX(2em) translateY(16em);
+      display: grid;
+      justify-content: center;
      }
 
           
@@ -574,15 +607,16 @@ ul {
 
 
   #btn-inscribir{
-
-    margin: auto;
+    margin: 22px;
     width: 90%;
   }
+
   .columna {
     float: left;
     width: 70%;
     padding: 20px;
     margin-left: 10%;
+    text-align: center;
 }
 
   .header h1{ 
@@ -658,8 +692,8 @@ ul {
       text-align: center; /* Centra los enlaces uno debajo del otro */
     }
 
+  }
 
-
-  }  
+  
 
 

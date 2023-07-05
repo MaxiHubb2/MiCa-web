@@ -5,10 +5,11 @@
 }
 
 body {
-  background: linear-gradient(to bottom, #d0c3dd 0%,#8fcde7 100%);
+  background: linear-gradient(to right, #d0c3dd 0%, #8fcde7 100%);
   font-family: 'Manjari', sans-serif;
-
+  background-size: 100% 100%; /* Ajustar el tamaño del fondo al 100% tanto en ancho como en altura */
 }
+
 
 body header h1{
     padding: 10px 20px;
@@ -88,7 +89,7 @@ header.header h1 a:hover {
   width: 100%;
   max-width: 95px;
   height: 95px;
-  background-image: url(/img/materia.svg);
+  background-image: url(../img/materia.svg);
   background-size: cover;
   box-shadow: 0 0 10px rgba(14, 1, 1, 0.5);
 }
@@ -102,7 +103,7 @@ header.header h1 a:hover {
   width: 100%;
   max-width: 95px;
   height: 95px;
-  background-image: url(/img/Libreta-materias.svg);
+  background-image: url(../img/Libreta-materias.svg);
   background-size: cover;
   box-shadow: 0 0 10px rgba(14, 1, 1, 0.5);
 }
@@ -114,7 +115,7 @@ header.header h1 a:hover {
   width: 100%;
   max-width: 95px;
   height: 95px;
-  background-image: url(/img/Libreta-materias.svg);
+  background-image: url(../img/Libreta-materias.svg);
   background-size: cover;
   box-shadow: 0 0 15px rgba(14, 1, 1, 0.5);
 }
@@ -138,7 +139,7 @@ header.header h1 a:hover {
   max-width: 95px;
   height: 95px;
   background-size: cover;
-  background-image: url(/img/Historial-academico.svg);
+  background-image: url(../img/Historial-academico.svg);
   box-shadow: 0 0 10px rgba(14, 1, 1, 0.5);
 }
 
@@ -151,7 +152,7 @@ header.header h1 a:hover {
   max-width: 95px;
   height: 95px;
   background-size: cover;
-  background-image: url(/img/Materia-regu.svg);
+  background-image: url(../img/Materia-regu.svg);
   box-shadow: 0 0 10px rgba(14, 1, 1, 0.5);
 }
 
@@ -164,7 +165,7 @@ header.header h1 a:hover {
   max-width: 95px;
   height: 95px;
   background-size: cover;
-  background-image: url(/img/Matricula.svg);
+  background-image: url(../img/Matricula.svg);
   box-shadow: 0 0 10px rgba(14, 1, 1, 0.5);
 }
 
@@ -236,13 +237,13 @@ header.header h1 a:hover {
   }
   
 .avatar .cierre-sesion {
-    background-image: url(/img/Cerrar-sesion.svg);
+    background-image: url(../img/Cerrar-sesion.svg);
     background-position: center; /* Alinea la imagen en el centro */
     right: 90px; /* Ajusta la posición horizontal según sea necesario */
   }
   
   .avatar .editar-perfil {
-    background-image: url(/img/editar-perfil.svg);
+    background-image: url(../img/editar-perfil.svg);
     background-position: center; /* Alinea la imagen en el centro */
     right: 140px; /* Ajusta la posición horizontal según sea necesario */
   }
@@ -519,7 +520,7 @@ ul{
         height: 69%;
         background-size: contain; /* Ajusta el tamaño de la imagen sin deformarla */
         background-repeat: no-repeat;
-        background-image: url(/img/Historial-academico.svg);
+        background-image: url(../img/Historial-academico.svg);
         box-shadow: 0 0 10px rgba(14, 1, 1, 0.5);
       }
       
@@ -533,7 +534,7 @@ ul{
         height: 69%;
         background-size: contain; /* Ajusta el tamaño de la imagen sin deformarla */
         background-repeat: no-repeat;
-        background-image: url(/img/Materia-regu.svg);
+        background-image: url(../img/Materia-regu.svg);
         box-shadow: 0 0 10px rgba(14, 1, 1, 0.5);
       }
       
@@ -547,7 +548,7 @@ ul{
         height: 69%;
         background-size: contain; /* Ajusta el tamaño de la imagen sin deformarla */
         background-repeat: no-repeat;
-        background-image: url(/img/Matricula.svg);
+        background-image: url(../img/Matricula.svg);
         box-shadow: 0 0 10px rgba(14, 1, 1, 0.5);
       }
   
@@ -559,7 +560,7 @@ ul{
         width: 100%;
         max-width: 35%;
         height: 79%;
-        background-image: url(/img/materia.svg);
+        background-image: url(../img/materia.svg);
         background-size: contain; /* Ajusta el tamaño de la imagen sin deformarla */
         background-repeat: no-repeat;  
         box-shadow: 0 0 10px rgba(14, 1, 1, 0.5);
@@ -573,7 +574,7 @@ ul{
         width: 100%;
         max-width: 35%;
         height: 69%;
-        background-image: url(/img/Libreta-materias.svg);
+        background-image: url(../img/Libreta-materias.svg);
         background-size: contain; /* Ajusta el tamaño de la imagen sin deformarla */
         background-repeat: no-repeat;  
         box-shadow: 0 0 10px rgba(14, 1, 1, 0.5);
@@ -587,7 +588,7 @@ ul{
         width: 100%;
         max-width: 35%;
         height: 69%;
-        background-image: url(/img/Libreta-materias.svg);
+        background-image: url(../img/Libreta-materias.svg);
         background-size: contain; /* Ajusta el tamaño de la imagen sin deformarla */
         background-repeat: no-repeat;  
         box-shadow: 0 0 10px rgba(14, 1, 1, 0.5);
@@ -699,11 +700,11 @@ ul{
     top: 18%;
     left: 6%;
     width: 100%;
-    max-width: 30%;
+    max-width: 22%;
     height: 69%;
     background-size: contain; /* Ajusta el tamaño de la imagen sin deformarla */
     background-repeat: no-repeat;
-    background-image: url(/img/Historial-academico.svg);
+    background-image: url(../img/Historial-academico.svg);
     box-shadow: 0 0 10px rgba(14, 1, 1, 0.5);
   }
   
@@ -713,11 +714,11 @@ ul{
     top: 18%;
     left: 6%;
     width: 100%;
-    max-width: 30%;
+    max-width: 22%;
     height: 69%;
     background-size: contain; /* Ajusta el tamaño de la imagen sin deformarla */
     background-repeat: no-repeat;
-    background-image: url(/img/Materia-regu.svg);
+    background-image: url(../img/Materia-regu.svg);
     box-shadow: 0 0 10px rgba(14, 1, 1, 0.5);
   }
   
@@ -727,11 +728,11 @@ ul{
     top: 18%;
     left: 6%;
     width: 100%;
-    max-width: 30%;
+    max-width: 22%;
     height: 69%;
     background-size: contain; /* Ajusta el tamaño de la imagen sin deformarla */
     background-repeat: no-repeat;
-    background-image: url(/img/Matricula.svg);
+    background-image: url(../img/Matricula.svg);
     box-shadow: 0 0 10px rgba(14, 1, 1, 0.5);
   }
 
@@ -741,9 +742,9 @@ ul{
     top: 7%;
     left: 6%;
     width: 100%;
-    max-width: 30%;
+    max-width: 22%;
     height: 79%;
-    background-image: url(/img/materia.svg);
+    background-image: url(../img/materia.svg);
     background-size: contain; /* Ajusta el tamaño de la imagen sin deformarla */
     background-repeat: no-repeat;  
     box-shadow: 0 0 10px rgba(14, 1, 1, 0.5);
@@ -755,9 +756,9 @@ ul{
     top: 18%;
     left: 6%;
     width: 100%;
-    max-width: 30%;
+    max-width: 22%;
     height: 69%;
-    background-image: url(/img/Libreta-materias.svg);
+    background-image: url(../img/Libreta-materias.svg);
     background-size: contain; /* Ajusta el tamaño de la imagen sin deformarla */
     background-repeat: no-repeat;  
     box-shadow: 0 0 10px rgba(14, 1, 1, 0.5);
@@ -769,9 +770,9 @@ ul{
     top: 18%;
     left: 6%;
     width: 100%;
-    max-width: 30%;
+    max-width: 22%;
     height: 69%;
-    background-image: url(/img/Libreta-materias.svg);
+    background-image: url(../img/Libreta-materias.svg);
     background-size: contain; /* Ajusta el tamaño de la imagen sin deformarla */
     background-repeat: no-repeat;  
     box-shadow: 0 0 10px rgba(14, 1, 1, 0.5);

@@ -10,14 +10,14 @@
   width: 25%;
   margin-top: 15%;
   margin-bottom: 1%;
-  background-color: rgb(71 201 157 / 83%);
+  background: linear-gradient(to right, rgba(152, 113, 190, 0.7) 0%, rgba(76, 147, 177, 0.877) 100%);
   padding: 1.25em;
   border-radius: 10px;
 }
 
 body {
 
-  background-image: url(/img/Unlam.jpg);
+  background-image: url(../img/Unlam.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -32,7 +32,7 @@ body {
 .button {
   width: 50%;
   margin: 5% 23%;
-  background-color: rgb(71, 209, 163);
+  background: rgba(76, 147, 177, 0.877) 100%;
   text-align: center;
   transition: transform 0.3s;
 }
@@ -60,7 +60,6 @@ body {
 }
 
 .contenedor form {
-  /* ... tus estilos actuales ... */
   margin-left: auto;
   margin-right: auto;
   width: 25%;
@@ -87,7 +86,7 @@ body {
 
 .error {
   width: 100%;
-  color: rgb(231, 5, 5);
+  color: rgba(245, 12, 12, 0.877);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -142,7 +141,7 @@ html{
   body {
     margin: 0;
     padding: 0;
-    background: url("/img/Unlam.jpg") no-repeat center center fixed;
+    background: url("../img/Unlam.jpg") no-repeat center center fixed;
     background-size: cover;
     background-attachment: fixed;
     font-family: 'Manjari', sans-serif;
@@ -188,7 +187,7 @@ html{
   .formulario .button {
     width: 100%;
     padding: 10px;
-    background-color: #4caf50;
+    background: rgba(76, 147, 177, 0.877) 100%;
     color: #ffffff;
     border: none;
     border-radius: 4px;
@@ -196,11 +195,11 @@ html{
   }
 
   .formulario .button:hover {
-    background-color: #40e048;
+    background: rgba(76, 147, 177, 0.877) 100%;
   }
 
   .formulario a {
     text-decoration: none;
-    color: #666666;
+    color: #f1e8e8;
   }
 }

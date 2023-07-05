@@ -422,3 +422,23 @@ window.addEventListener('resize', function() {
     textoInscripcion.textContent = 'Podes inscribirte a las materias según tu carrera';
   }
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Obtenemos la referencia al elemento .mi-carrera-text
+  const miCarreraText = document.querySelector('.mi-carrera-text');
+
+  // Función para actualizar el texto del elemento miCarreraText
+  function actualizarTextoMiCarrera(texto) {
+    miCarreraText.textContent = texto;
+  }
+
+  // Actualizamos el texto al cargar la página
+  actualizarTextoMiCarrera('Mi Carrera - Inscripción a materias');
+
+  if (window.innerWidth >= 600) {
+    inscripcionMateriasLink.addEventListener('click', function() {
+      actualizarTextoMiCarrera('Mi Carrera - Inscripción a materias');
+    });
+  }
+
+});
