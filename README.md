@@ -11,3 +11,5 @@
   
 </ul> 
 la web es completamente responsive en las pantallas de 300 a 700px :iphone: y al final de la inscripcion genera un pdf con tus datos ingresados:page_facing_up:</p>
+
+Podes ingresar directamente desde la web: https://micaweb2.netlify.app/
